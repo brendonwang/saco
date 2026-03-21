@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
+
+@import "tailwindcss";
+
+@theme inline {
+  --font-headline: var(--font-saco-mono), ui-monospace, monospace;
+  --font-body: var(--font-saco-sans), ui-sans-serif, sans-serif;
+  --font-label: var(--font-saco-mono), ui-monospace, monospace;
+
+  --color-primary: #00f0ff;
+  --color-on-primary-container: #00373a;
+  --color-inverse-surface: #f1f5f9;
+  --color-error-container: #93002a;
+  --color-secondary: #00ffa3;
+  --color-tertiary-fixed-dim: #ff897d;
+  --color-on-secondary-container: #00ffa3;
+  --color-on-primary: #0a0b0e;
+  --color-on-error-container: #ffdade;
+  --color-on-primary-fixed: #0a0b0e;
+  --color-surface-tint: #00f0ff;
+  --color-secondary-fixed-dim: #00cc82;
+  --color-surface-variant: #14161c;
+  --color-on-tertiary-fixed: #690005;
+  --color-surface-container-lowest: #050608;
+  --color-surface-container-highest: #242830;
+  --color-primary-container: #00f0ff;
+  --color-inverse-primary: #00696f;
+  --color-on-surface-variant: #64748b;
+  --color-background: #0a0b0e;
+  --color-tertiary: #ff3366;
+  --color-on-tertiary: #ffffff;
+  --color-on-surface: #f1f5f9;
+  --color-surface-container: #14161c;
+  --color-tertiary-container: #93002a;
+  --color-on-secondary-fixed: #0a0b0e;
+  --color-on-secondary-fixed-variant: #004d31;
+  --color-on-tertiary-fixed-variant: #93000a;
+  --color-secondary-container: #004d31;
+  --color-primary-fixed-dim: #00dce7;
+  --color-surface-bright: #1e293b;
+  --color-surface: #0a0b0e;
+  --color-primary-fixed: #00f0ff;
+  --color-tertiary-fixed: #ffb4ab;
+  --color-outline-variant: #334155;
+  --color-outline: #1e293b;
+  --color-surface-container-low: #0d0f14;
+  --color-secondary-fixed: #00ffa3;
+  --color-inverse-on-surface: #0a0b0e;
+  --color-on-background: #f1f5f9;
+  --color-on-secondary: #0a0b0e;
+  --color-on-tertiary-container: #ffdade;
+  --color-error: #ff3366;
+  --color-on-error: #ffffff;
+  --color-on-primary-fixed-variant: #004f54;
+  --color-surface-container-high: #1c1f26;
+  --color-surface-dim: #08090c;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+.bg-grid-pattern {
+  background-image: radial-gradient(circle, #1e293b 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.glow-border {
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+}
+
+/* SACC route: --font-sacc-* from src/app/sacc/layout.tsx (next/font) */
+.font-sacc-display {
+  font-family: var(--font-sacc-display), ui-sans-serif, sans-serif;
+}
+.font-sacc-mono {
+  font-family: var(--font-sacc-mono), ui-monospace, monospace;
+}
+
+/* Terminal.app-style stack on macOS: ui-monospace → SF Mono → Menlo → Monaco */
+.font-macos-terminal {
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    "SF Mono",
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    monospace;
+}
+
+.terminal-scanline {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.25) 50%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+    );
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+
+.terminal-crt-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.08) 2px,
+    rgba(255, 255, 255, 0.08) 4px
+  );
+}
