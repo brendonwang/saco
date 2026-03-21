@@ -107,8 +107,6 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
-
-      <div className="pointer-events-none fixed inset-0 z-[100] opacity-10 terminal-scanline" />
     </>
   );
 }

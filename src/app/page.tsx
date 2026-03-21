@@ -219,8 +219,6 @@ export default function Home() {
           </span>
         </div>
       </footer>
-
-      <div className="pointer-events-none fixed inset-0 z-[100] opacity-10 terminal-scanline" />
     </>
   );
 }
