@@ -6,8 +6,8 @@ import Terminal from "./terminal";
 import Navbar from "@/components/navbar";
 
 const SACC_STATS = [
-  { label: "Prize Pool", value: "$5,000" },
-  { label: "Duration", value: "12 HR" },
+  { label: "Prize Pool", value: "$500" },
+  { label: "Duration", value: "4 HR" },
   { label: "Team Size", value: "3" },
   { label: "Problems", value: "8" },
 ] as const;
@@ -45,10 +45,6 @@ const FAQ_ITEMS = [
   {
     q: "What should I bring?",
     a: "A laptop, charger, and photo ID. Internet access is provided but restricted to the contest judge only — no external resources.",
-  },
-  {
-    q: "How is the $5,000 prize distributed?",
-    a: "First place takes $2,500, second place $1,500, and third place $1,000. Prizes are split equally among team members.",
   },
 ] as const;
 

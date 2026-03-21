@@ -2,12 +2,12 @@ import type { LucideIcon } from "lucide-react";
 import { School, Trophy, Users } from "lucide-react";
 import Navbar from "@/components/navbar";
 
-const STATS = [
-  { value: "500+", label: "Active Members" },
-  { value: "30+", label: "Partner Schools" },
-  { value: "12", label: "Events Per Year" },
-  { value: "3", label: "Years Running" },
-] as const;
+// const STATS = [
+//   { value: "500+", label: "Active Members" },
+//   { value: "30+", label: "Partner Schools" },
+//   { value: "12", label: "Events Per Year" },
+//   { value: "3", label: "Years Running" },
+// ] as const;
 
 const PILLARS = [
   {
@@ -49,7 +49,7 @@ export default function AboutPage() {
               <div className="mt-6 h-1 w-24 bg-primary" />
             </div>
 
-            <div className="grid gap-16 md:grid-cols-2">
+            <div className="grid gap-16" /*md:grid-cols-2*/>
               <div className="space-y-6">
                 <p className="font-body text-lg font-light leading-relaxed text-on-surface-variant">
                   The Seattle Area Coding Organization is a student-led
@@ -67,21 +67,21 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
-                {STATS.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="flex flex-col items-center justify-center border border-outline-variant bg-surface-container p-6 text-center transition-colors hover:border-primary/50"
-                  >
-                    <span className="font-headline text-4xl font-bold text-primary">
-                      {stat.value}
-                    </span>
-                    <span className="mt-2 font-label text-[10px] uppercase tracking-widest text-on-surface-variant">
-                      {stat.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              {/*<div className="grid grid-cols-2 gap-6">*/}
+              {/*  {STATS.map((stat) => (*/}
+              {/*    <div*/}
+              {/*      key={stat.label}*/}
+              {/*      className="flex flex-col items-center justify-center border border-outline-variant bg-surface-container p-6 text-center transition-colors hover:border-primary/50"*/}
+              {/*    >*/}
+              {/*      <span className="font-headline text-4xl font-bold text-primary">*/}
+              {/*        {stat.value}*/}
+              {/*      </span>*/}
+              {/*      <span className="mt-2 font-label text-[10px] uppercase tracking-widest text-on-surface-variant">*/}
+              {/*        {stat.label}*/}
+              {/*      </span>*/}
+              {/*    </div>*/}
+              {/*  ))}*/}
+              {/*</div>*/}
             </div>
 
             <div className="mt-20 grid gap-px border border-outline-variant bg-outline-variant md:grid-cols-3">
