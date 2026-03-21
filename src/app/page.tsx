@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/navbar";
 
 const EVENT_IMAGES = {
@@ -89,10 +90,8 @@ function EventCard({
           href={event.href}
           className="inline-flex items-center gap-2 font-label text-sm uppercase tracking-widest text-primary transition-all group-hover:gap-4"
         >
-          {event.cta}{" "}
-          <span className="material-symbols-outlined text-sm">
-            arrow_forward
-          </span>
+          {event.cta}
+          <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
     </article>

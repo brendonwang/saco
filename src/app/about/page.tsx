@@ -1,3 +1,5 @@
+import type { LucideIcon } from "lucide-react";
+import { School, Trophy, Users } from "lucide-react";
 import Navbar from "@/components/navbar";
 
 const STATS = [
@@ -9,21 +11,25 @@ const STATS = [
 
 const PILLARS = [
   {
-    icon: "school",
+    icon: School,
     title: "Educate",
     body: "Free workshops, study groups, and curated problem sets for all skill levels — from first-time competitors to IOI hopefuls.",
   },
   {
-    icon: "emoji_events",
+    icon: Trophy,
     title: "Compete",
     body: "Host and organize regional contests that challenge students with real algorithmic problems under timed, competitive conditions.",
   },
   {
-    icon: "group",
+    icon: Users,
     title: "Connect",
     body: "Build a network of like-minded students, mentors, and industry professionals across the Pacific Northwest.",
   },
-] as const;
+] as const satisfies ReadonlyArray<{
+  icon: LucideIcon;
+  title: string;
+  body: string;
+}>;
 
 export default function AboutPage() {
   return (
@@ -79,22 +85,24 @@ export default function AboutPage() {
             </div>
 
             <div className="mt-20 grid gap-px border border-outline-variant bg-outline-variant md:grid-cols-3">
-              {PILLARS.map((pillar) => (
-                <div
-                  key={pillar.title}
-                  className="group bg-surface-container p-10 transition-colors hover:bg-surface-container-high"
-                >
-                  <span className="material-symbols-outlined mb-4 block text-3xl text-primary transition-colors group-hover:text-secondary">
-                    {pillar.icon}
-                  </span>
-                  <h3 className="mb-3 font-headline text-xl font-bold uppercase tracking-tight text-on-surface">
-                    {pillar.title}
-                  </h3>
-                  <p className="font-body text-sm font-light leading-relaxed text-on-surface-variant">
-                    {pillar.body}
-                  </p>
-                </div>
-              ))}
+              {PILLARS.map((pillar) => {
+                const Icon = pillar.icon;
+
+                return (
+                  <div
+                    key={pillar.title}
+                    className="group bg-surface-container p-10 transition-colors hover:bg-surface-container-high"
+                  >
+                    <Icon className="mb-4 h-8 w-8 text-primary transition-colors group-hover:text-secondary" />
+                    <h3 className="mb-3 font-headline text-xl font-bold uppercase tracking-tight text-on-surface">
+                      {pillar.title}
+                    </h3>
+                    <p className="font-body text-sm font-light leading-relaxed text-on-surface-variant">
+                      {pillar.body}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

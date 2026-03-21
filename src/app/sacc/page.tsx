@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import Terminal from "./terminal";
 import Navbar from "@/components/navbar";
 
@@ -63,12 +64,10 @@ function FaqItem({ q, a }: { q: string; a: string }) {
         <span className="font-sacc-mono text-sm font-bold uppercase tracking-wider text-[#F1F5F9]">
           {q}
         </span>
-        <span
-          className="material-symbols-outlined shrink-0 text-[#00F0FF] transition-transform duration-200"
+        <ChevronDown
+          className="shrink-0 text-[#00F0FF] transition-transform duration-200"
           style={{ transform: open ? "rotate(180deg)" : undefined }}
-        >
-          expand_more
-        </span>
+        />
       </button>
       <div
         className="grid transition-[grid-template-rows] duration-200"
