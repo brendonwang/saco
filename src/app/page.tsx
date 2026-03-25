@@ -250,7 +250,7 @@ export default function Home() {
               , algorithmic thinking, and connecting high school coders across
               the Pacific Northwest.
             </p>
-            <div className="flex w-full max-w-md flex-col items-stretch justify-center gap-4 touch-manipulation sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-6">
+            <div className="mx-auto flex w-full max-w-md flex-col items-stretch justify-center gap-4 touch-manipulation sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-6">
               <button
                 type="button"
                 className="min-h-12 w-full bg-secondary px-8 py-4 font-headline text-base font-bold uppercase tracking-widest text-on-secondary transition-all hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,255,163,0.4)] active:scale-[0.98] sm:min-h-0 sm:px-10 sm:py-5 sm:text-lg md:w-auto"
