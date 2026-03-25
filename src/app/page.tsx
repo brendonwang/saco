@@ -1,20 +1,80 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/navbar";
+
+const AURORA_RIBBONS = [
+  {
+    gradient:
+      "linear-gradient(90deg, transparent 5%, rgba(0,240,255,0.10) 20%, rgba(0,240,255,0.28) 42%, rgba(0,255,163,0.14) 62%, rgba(0,240,255,0.06) 82%, transparent 95%)",
+    top: "2%",
+    left: "-20%",
+    width: "140%",
+    height: "350px",
+    blur: "38px",
+  },
+  {
+    gradient:
+      "linear-gradient(90deg, transparent 5%, rgba(0,255,163,0.07) 22%, rgba(0,255,163,0.22) 44%, rgba(0,240,255,0.12) 64%, rgba(0,255,163,0.05) 84%, transparent 95%)",
+    top: "28%",
+    left: "-15%",
+    width: "130%",
+    height: "300px",
+    blur: "42px",
+  },
+] as const;
+
+const GLOW_SOURCES = [
+  {
+    left: "30%",
+    top: "12%",
+    size: "700px",
+    color: "rgba(0, 240, 255, 0.20)",
+    blur: "50px",
+    opacity: 0.42,
+  },
+  {
+    left: "65%",
+    top: "8%",
+    size: "600px",
+    color: "rgba(0, 255, 163, 0.16)",
+    blur: "55px",
+    opacity: 0.38,
+  },
+  {
+    left: "15%",
+    top: "50%",
+    size: "450px",
+    color: "rgba(255, 51, 102, 0.08)",
+    blur: "60px",
+    opacity: 0.22,
+  },
+] as const;
+
+const SPARKS = Array.from({ length: 18 }, (_, i) => {
+  const colors = ["#b9fbff", "#c4ffe8", "#f8fbff"] as const;
+  const isBright = i % 5 === 0;
+  const isMedium = i % 3 === 0 && !isBright;
+  return {
+    x: 5 + ((i * 23) % 90),
+    y: 6 + ((i * 31) % 75),
+    size: isBright ? 5 : isMedium ? 3.5 : 2,
+    color: colors[i % 3],
+    glow: isBright
+      ? "0 0 16px rgba(0,240,255,0.8), 0 0 36px rgba(0,240,255,0.35)"
+      : isMedium
+        ? "0 0 10px rgba(0,255,163,0.7), 0 0 24px rgba(0,255,163,0.3)"
+        : "0 0 6px rgba(148,163,184,0.5)",
+    opacity: isBright ? 0.72 : isMedium ? 0.48 : 0.32,
+  };
+});
 
 const EVENT_IMAGES = {
   sacc: "https://lh3.googleusercontent.com/aida-public/AB6AXuCfIeVZPJfPBwS2reFZwf3WP66mofEmxuRDC39GgkHxXHL8fXa_aJspZMim9dnxuKaqWDgFuMYuvbfdBUx7Bu1ung6PYD6mxVBW55Y2bXBTUYY0zbH0CF3iIldJ4jnwrbt9Gp9ites7MYiINWfPer3XZ9Dhkyidhxy1Mkk27N6JXJqTZ-_Z-g3X-cbWdXfytRjpaW5QV8120MuNHRIv31YBk3p5Gu7LFGCURTLyieOOO1WL_t2xPF2oI9b2UZAXvAB_IcpYvizI22M",
   hackNight:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuCqJCHr5lPcVVL0EfWLtHl94CjPyQWWlaGK_krPARy6wUvFF1zH2NlnIGXi11YtllMk19nrCgFbhFMO5ppnYgcIZb6VADtnne0zDWP8uO7KDopIbfb9Q-umgF2fxVCFGPOumhDu2vhw5x_5orYNP0AVzr1L2-2rbQ4k7iC69YFbpZdhBlqgYSMkv0tqknxzjPgiT-DqaT8DEm3ajcojNfAiYHX3m-NDpEodGkThLS4nSEJgW0piMjYj9agFHo1X-86ilosdBC8THas",
 } as const;
-
-const FOOTER_LINKS = [
-  { label: "STATUS:ONLINE", highlight: true },
-  { label: "SECURE_CONNECTION" },
-  { label: "COMMUNITY_HUB" },
-  { label: "DATA_GUIDELINES" },
-] as const;
 
 const EVENTS = [
   {
@@ -98,12 +158,82 @@ function EventCard({
   );
 }
 
+function HeroBackdrop() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      {GLOW_SOURCES.map((orb, i) => (
+        <div
+          key={`orb-${i}`}
+          className="absolute rounded-full"
+          style={
+            {
+              left: orb.left,
+              top: orb.top,
+              width: orb.size,
+              height: orb.size,
+              backgroundColor: orb.color,
+              filter: `blur(${orb.blur})`,
+              opacity: orb.opacity,
+            } satisfies CSSProperties
+          }
+        />
+      ))}
+
+      {AURORA_RIBBONS.map((ribbon, i) => (
+        <div
+          key={`ribbon-${i}`}
+          className="absolute"
+          style={
+            {
+              background: ribbon.gradient,
+              top: ribbon.top,
+              left: ribbon.left,
+              width: ribbon.width,
+              height: ribbon.height,
+              filter: `blur(${ribbon.blur})`,
+            } satisfies CSSProperties
+          }
+        />
+      ))}
+
+      <div className="backdrop-grid absolute inset-0" />
+
+      {SPARKS.map((spark, i) => (
+        <span
+          key={`spark-${i}`}
+          className="absolute rounded-full"
+          style={
+            {
+              left: `${spark.x}%`,
+              top: `${spark.y}%`,
+              width: spark.size,
+              height: spark.size,
+              backgroundColor: spark.color,
+              boxShadow: spark.glow,
+              opacity: spark.opacity,
+              transform: "translate(-50%, -50%)",
+            } satisfies CSSProperties
+          }
+        />
+      ))}
+
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(10,11,14,0.12)_40%,rgba(10,11,14,0.65)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,transparent_0%,rgba(10,11,14,0.06)_45%,rgba(10,11,14,0.42)_100%)]" />
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <>
       <Navbar activePath="/" />
 
-      <main className="pt-24">
+      <main className="relative overflow-hidden pt-16">
+        <HeroBackdrop />
+
         <section className="relative flex min-h-[870px] flex-col items-center justify-center overflow-hidden px-6">
           <div className="z-10 max-w-5xl text-center">
             <h1 className="mb-8 bg-gradient-to-r from-primary via-primary-fixed-dim to-secondary bg-clip-text font-headline text-[5rem] font-extrabold uppercase leading-[0.9] tracking-tighter text-transparent text-glow md:text-[8rem]">
@@ -137,7 +267,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl border-t border-outline-variant/30 px-8 py-32">
+        <section className="relative mx-auto max-w-7xl border-t border-outline-variant/30 px-8 py-32">
           <div className="mb-16 flex items-center justify-between">
             <div className="flex flex-col">
               <h2 className="font-headline text-4xl font-bold uppercase tracking-tight text-glow">
@@ -179,46 +309,10 @@ export default function Home() {
               >
                 More Details
               </Link>
-              <button
-                type="button"
-                className="w-full border-2 border-primary px-12 py-5 font-headline text-lg font-bold uppercase tracking-widest text-primary transition-all hover:bg-primary/10 sm:w-auto"
-              >
-                Contest Rules
-              </button>
             </div>
           </div>
         </section>
       </main>
-
-      <footer className="flex w-full flex-col items-center justify-between gap-4 border-t-[0.5px] border-emerald-900/30 bg-[#050608] px-12 py-8 md:flex-row">
-        <div className="font-headline text-[10px] font-bold uppercase tracking-widest text-emerald-400">
-          ©2025 SEATTLE_ALGORITHMS_ORG // MAIN_HUB
-        </div>
-        <div className="flex flex-wrap justify-center gap-6">
-          {FOOTER_LINKS.map(({ label, ...rest }) => {
-            const highlight = "highlight" in rest;
-            return (
-              <a
-                key={label}
-                href="#"
-                className={`font-headline text-[10px] uppercase tracking-widest transition-colors hover:text-emerald-300 ${
-                  highlight
-                    ? "text-emerald-400 underline decoration-dotted"
-                    : "text-slate-600"
-                }`}
-              >
-                {label}
-              </a>
-            );
-          })}
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="h-1 w-1 animate-ping rounded-full bg-emerald-400" />
-          <span className="font-headline text-[10px] uppercase text-emerald-400/60">
-            ONLINE
-          </span>
-        </div>
-      </footer>
     </>
   );
 }

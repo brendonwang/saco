@@ -14,7 +14,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SACC_2026 - Tech Noir",
+  title: "SACC 2026",
   description:
     "Seattle's premier competitive programming contest. High stakes, intense technical competition.",
 };

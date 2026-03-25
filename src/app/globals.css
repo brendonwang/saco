@@ -67,6 +67,25 @@
   box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
 }
 
+/* ── Backdrop (static grid only) ── */
+
+.backdrop-grid {
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(
+    ellipse at 50% 35%,
+    black 20%,
+    transparent 70%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse at 50% 35%,
+    black 20%,
+    transparent 70%
+  );
+}
+
 /* SACC route: --font-sacc-* from src/app/sacc/layout.tsx (next/font) */
 .font-sacc-display {
   font-family: var(--font-sacc-display), ui-sans-serif, sans-serif;

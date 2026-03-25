@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import Footer from "@/components/footer";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -15,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SACO // SEATTLE ALGORITHMS",
+  title: "SACO",
   description:
     "Seattle Area Coding Organization — competitive programming and algorithmic thinking for high school coders across the Pacific Northwest.",
 };
@@ -30,8 +31,9 @@ export default function RootLayout({
       lang="en"
       className={`dark ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
-        {children}
+      <body className="min-h-screen flex flex-col bg-background font-body text-on-surface selection:bg-primary selection:text-on-primary">
+        <div className="flex-1">{children}</div>
+        <Footer />
       </body>
     </html>
   );

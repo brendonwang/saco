@@ -100,7 +100,7 @@ export default function SaccPage() {
     <>
       <Navbar activePath="/sacc" />
 
-      <main className="flex flex-grow flex-col items-center pt-24">
+      <main className="flex flex-grow flex-col items-center pt-16">
         <section className="relative flex min-h-[819px] w-full max-w-[1200px] flex-col items-center justify-center px-8 py-24 text-center">
           <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden opacity-20">
             <div className="h-[800px] w-[800px] rounded-full bg-[#00F0FF]/20 blur-[120px]" />

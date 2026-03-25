@@ -38,8 +38,8 @@ export default function AboutPage() {
     <>
       <Navbar activePath="/about" />
 
-      <main className="pt-24">
-        <section className="relative border-b border-outline-variant/30 bg-surface-container-low py-32">
+      <main className="pt-16">
+        <section className="relative border-b border-outline-variant/30 bg-surface-container-low pb-32 pt-24">
           <div className="mx-auto max-w-6xl px-8">
             <div className="mb-20 flex flex-col items-start">
               <span className="mb-4 font-label text-[12px] uppercase tracking-[0.4em] text-secondary">
