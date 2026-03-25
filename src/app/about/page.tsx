@@ -1,6 +1,8 @@
 import type { LucideIcon } from "lucide-react";
 import { School, Trophy, Users } from "lucide-react";
 import Navbar from "@/components/navbar";
+import Image from "next/image";
+import teamMembers from "@/data/team.json";
 
 // const STATS = [
 //   { value: "500+", label: "Active Members" },
@@ -103,6 +105,56 @@ export default function AboutPage() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-outline-variant/30 bg-surface py-32">
+          <div className="mx-auto max-w-6xl px-8">
+            <div className="mb-20 flex flex-col items-start">
+              <span className="mb-4 font-label text-[12px] uppercase tracking-[0.4em] text-secondary">
+                The Team
+              </span>
+              <h2 className="font-headline text-5xl font-extrabold uppercase tracking-tighter text-glow md:text-6xl">
+                Meet Our Members
+              </h2>
+              <div className="mt-6 h-1 w-24 bg-primary" />
+            </div>
+
+            <div className="flex flex-col divide-y divide-outline-variant border border-outline-variant">
+              {teamMembers.map((member) => (
+                <div
+                  key={member.name}
+                  className="group flex flex-col gap-6 bg-surface-container p-8 transition-colors hover:bg-surface-container-high sm:flex-row sm:items-center"
+                >
+                  <div className="relative h-20 w-20 shrink-0 overflow-hidden border border-outline-variant bg-surface-container-high">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover transition-all duration-500"
+                      sizes="80px"
+                    />
+                    <div className="absolute inset-0 border border-primary/0 transition-colors group-hover:border-primary/40" />
+                  </div>
+                  <div className="flex min-w-0 flex-1 flex-col sm:flex-row sm:items-center sm:gap-8">
+                    <div className="mb-2 shrink-0 sm:mb-0 sm:w-48">
+                      <h3 className="font-headline text-lg font-bold uppercase tracking-tight text-on-surface transition-colors group-hover:text-primary">
+                        {member.name}
+                      </h3>
+                      <span className="mt-1 block font-label text-[10px] uppercase tracking-widest text-secondary">
+                        {member.role}
+                      </span>
+                      <span className="mt-0.5 block font-label text-[10px] uppercase tracking-widest text-on-surface-variant">
+                        {member.school}
+                      </span>
+                    </div>
+                    <p className="font-body text-sm font-light leading-relaxed text-on-surface-variant">
+                      {member.bio}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
