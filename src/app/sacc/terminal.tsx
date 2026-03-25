@@ -106,7 +106,7 @@ export default function Terminal() {
   );
 
   return (
-    <div className="group relative my-8 w-full max-w-2xl overflow-hidden border border-[#1E293B] bg-[#0C0D11] text-left shadow-xl transition-colors">
+    <div className="group relative my-6 w-full min-w-0 max-w-2xl overflow-hidden border border-[#1E293B] bg-[#0C0D11] text-left shadow-xl transition-colors sm:my-8">
       <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-[#00F0FF] to-transparent opacity-60" />
 
       <div className="flex items-center gap-3 border-b border-[#1E293B] bg-[#14161C] px-4 py-2.5">
@@ -120,11 +120,11 @@ export default function Terminal() {
         </span>
       </div>
 
-      <div className="relative px-5 py-5">
+      <div className="relative min-w-0 overflow-x-auto px-4 py-4 sm:px-5 sm:py-5">
         <div className="terminal-crt-lines pointer-events-none absolute inset-0 z-10 opacity-[0.03]" />
 
         <div
-          className="font-sacc-mono relative z-20 select-none text-sm text-[#F1F5F9] md:text-base"
+          className="font-sacc-mono relative z-20 min-w-0 select-none text-xs text-[#F1F5F9] sm:text-sm md:text-base"
           style={{ minHeight: BODY_MIN_HEIGHT }}
         >
           {LINES.slice(0, visibleCount).map((line, i) => (

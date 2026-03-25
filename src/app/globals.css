@@ -107,6 +107,11 @@
     monospace;
 }
 
+/* Fixed header + notch: keep main content below the bar */
+.pt-page {
+  padding-top: max(4rem, calc(3.5rem + env(safe-area-inset-top, 0px)));
+}
+
 .terminal-crt-lines {
   background-image: repeating-linear-gradient(
     0deg,

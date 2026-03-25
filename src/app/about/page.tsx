@@ -38,14 +38,14 @@ export default function AboutPage() {
     <>
       <Navbar activePath="/about" />
 
-      <main className="pt-16">
-        <section className="relative border-b border-outline-variant/30 bg-surface-container-low pb-32 pt-24">
-          <div className="mx-auto max-w-6xl px-8">
-            <div className="mb-20 flex flex-col items-start">
+      <main className="pt-page">
+        <section className="relative border-b border-outline-variant/30 bg-surface-container-low pb-16 pt-12 sm:pb-24 sm:pt-20 md:pb-32 md:pt-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-8">
+            <div className="mb-12 flex flex-col items-start sm:mb-20">
               <span className="mb-4 font-label text-[12px] uppercase tracking-[0.4em] text-secondary">
                 Who We Are
               </span>
-              <h2 className="font-headline text-5xl font-extrabold uppercase tracking-tighter text-glow md:text-6xl">
+              <h2 className="font-headline text-4xl font-extrabold uppercase tracking-tighter text-glow sm:text-5xl md:text-6xl">
                 About SACO
               </h2>
               <div className="mt-6 h-1 w-24 bg-primary" />
@@ -53,7 +53,7 @@ export default function AboutPage() {
 
             <div className="grid gap-16" /*md:grid-cols-2*/>
               <div className="space-y-6">
-                <p className="font-body text-lg font-light leading-relaxed text-on-surface-variant">
+                <p className="font-body text-base font-light leading-relaxed text-on-surface-variant sm:text-lg">
                   The Seattle Area Coding Organization is a student-led
                   initiative connecting competitive programmers across the
                   Pacific Northwest. Founded by high school students who wanted
@@ -61,7 +61,7 @@ export default function AboutPage() {
                   problem-solving, SACO has grown into the region&apos;s premier
                   hub for aspiring coders.
                 </p>
-                <p className="font-body text-lg font-light leading-relaxed text-on-surface-variant">
+                <p className="font-body text-base font-light leading-relaxed text-on-surface-variant sm:text-lg">
                   We believe in learning by doing. Our events range from
                   beginner-friendly workshops to the annual Seattle Area
                   Computing Cup — a high-stakes contest that draws hundreds of
@@ -86,14 +86,14 @@ export default function AboutPage() {
               {/*</div>*/}
             </div>
 
-            <div className="mt-20 grid gap-px border border-outline-variant bg-outline-variant md:grid-cols-3">
+            <div className="mt-12 grid gap-px border border-outline-variant bg-outline-variant sm:mt-20 md:grid-cols-3">
               {PILLARS.map((pillar) => {
                 const Icon = pillar.icon;
 
                 return (
                   <div
                     key={pillar.title}
-                    className="group bg-surface-container p-10 transition-colors hover:bg-surface-container-high"
+                    className="group bg-surface-container p-6 transition-colors hover:bg-surface-container-high sm:p-8 md:p-10"
                   >
                     <Icon className="mb-4 h-8 w-8 text-primary transition-colors group-hover:text-secondary" />
                     <h3 className="mb-3 font-headline text-xl font-bold uppercase tracking-tight text-on-surface">
@@ -109,13 +109,13 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="border-b border-outline-variant/30 bg-surface py-32">
-          <div className="mx-auto max-w-6xl px-8">
-            <div className="mb-20 flex flex-col items-start">
+        <section className="border-b border-outline-variant/30 bg-surface py-16 sm:py-24 md:py-32">
+          <div className="mx-auto max-w-6xl px-4 sm:px-8">
+            <div className="mb-12 flex flex-col items-start sm:mb-20">
               <span className="mb-4 font-label text-[12px] uppercase tracking-[0.4em] text-secondary">
                 The Team
               </span>
-              <h2 className="font-headline text-5xl font-extrabold uppercase tracking-tighter text-glow md:text-6xl">
+              <h2 className="font-headline text-4xl font-extrabold uppercase tracking-tighter text-glow sm:text-5xl md:text-6xl">
                 Meet Our Members
               </h2>
               <div className="mt-6 h-1 w-24 bg-primary" />
@@ -125,7 +125,7 @@ export default function AboutPage() {
               {teamMembers.map((member) => (
                 <div
                   key={member.name}
-                  className="group flex flex-col gap-6 bg-surface-container p-8 transition-colors hover:bg-surface-container-high sm:flex-row sm:items-center"
+                  className="group flex flex-col gap-6 bg-surface-container p-5 transition-colors hover:bg-surface-container-high sm:flex-row sm:items-center sm:p-8"
                 >
                   <div className="relative h-20 w-20 shrink-0 overflow-hidden border border-outline-variant bg-surface-container-high">
                     <Image

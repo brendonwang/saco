@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import Footer from "@/components/footer";
 import "./globals.css";
@@ -21,6 +21,12 @@ export const metadata: Metadata = {
     "Seattle Area Coding Organization — competitive programming and algorithmic thinking for high school coders across the Pacific Northwest.",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,7 +37,7 @@ export default function RootLayout({
       lang="en"
       className={`dark ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-background font-body text-on-surface selection:bg-primary selection:text-on-primary">
+      <body className="flex min-h-dvh flex-col bg-background font-body text-on-surface selection:bg-primary selection:text-on-primary">
         <div className="flex-1">{children}</div>
         <Footer />
       </body>

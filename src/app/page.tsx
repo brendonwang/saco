@@ -129,8 +129,8 @@ function EventCard({
           <span className={`h-2 w-2 ${colors.dotDim}`} />
         </div>
       </div>
-      <div className="relative p-8">
-        <div className="mb-4 flex items-center justify-between">
+      <div className="relative p-5 sm:p-8">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
           <span
             className={`border px-2 py-0.5 font-label text-[10px] uppercase tracking-widest ${colors.badge}`}
           >
@@ -140,10 +140,10 @@ function EventCard({
             {event.date}
           </span>
         </div>
-        <h3 className="mb-4 font-headline text-3xl font-bold uppercase tracking-tighter text-on-surface transition-colors group-hover:text-primary">
+        <h3 className="mb-4 font-headline text-2xl font-bold uppercase tracking-tighter text-on-surface transition-colors group-hover:text-primary sm:text-3xl">
           {event.title}
         </h3>
-        <p className="mb-8 font-body font-light leading-relaxed text-on-surface-variant">
+        <p className="mb-6 font-body text-sm font-light leading-relaxed text-on-surface-variant sm:mb-8 sm:text-base">
           {event.description}
         </p>
         <Link
@@ -231,18 +231,18 @@ export default function Home() {
     <>
       <Navbar activePath="/" />
 
-      <main className="relative overflow-hidden pt-16">
+      <main className="relative overflow-x-hidden pt-page">
         <HeroBackdrop />
 
-        <section className="relative flex min-h-[870px] flex-col items-center justify-center overflow-hidden px-6">
+        <section className="relative flex min-h-[min(100dvh,52rem)] flex-col items-center justify-center overflow-hidden px-4 sm:px-6 md:min-h-[870px]">
           <div className="z-10 max-w-5xl text-center">
-            <h1 className="mb-8 bg-gradient-to-r from-primary via-primary-fixed-dim to-secondary bg-clip-text font-headline text-[5rem] font-extrabold uppercase leading-[0.9] tracking-tighter text-transparent text-glow md:text-[8rem]">
+            <h1 className="mb-6 bg-gradient-to-r from-primary via-primary-fixed-dim to-secondary bg-clip-text font-headline text-4xl font-extrabold uppercase leading-[0.95] tracking-tighter text-transparent text-glow sm:text-5xl md:text-7xl lg:text-[8rem]">
               Seattle Area Coding Organization
             </h1>
-            <div className="mb-8 font-label text-sm uppercase tracking-[0.4em] text-primary/80">
+            <div className="mb-6 font-label text-xs uppercase tracking-[0.35em] text-primary/80 sm:text-sm sm:tracking-[0.4em]">
               BUILT BY STUDENTS, FOR STUDENTS
             </div>
-            <p className="mx-auto mb-12 max-w-3xl font-body text-xl font-light leading-relaxed text-on-surface-variant md:text-2xl">
+            <p className="mx-auto mb-10 max-w-3xl font-body text-base font-light leading-relaxed text-on-surface-variant sm:text-lg md:mb-12 md:text-2xl">
               A student-run community dedicated to{" "}
               <span className="font-medium text-on-surface">
                 competitive programming
@@ -250,16 +250,16 @@ export default function Home() {
               , algorithmic thinking, and connecting high school coders across
               the Pacific Northwest.
             </p>
-            <div className="flex flex-col items-center justify-center gap-6 md:flex-row">
+            <div className="flex w-full max-w-md flex-col items-stretch justify-center gap-4 touch-manipulation sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-6">
               <button
                 type="button"
-                className="w-full bg-secondary px-10 py-5 font-headline text-lg font-bold uppercase tracking-widest text-on-secondary transition-all hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,255,163,0.4)] active:scale-[0.98] md:w-auto"
+                className="min-h-12 w-full bg-secondary px-8 py-4 font-headline text-base font-bold uppercase tracking-widest text-on-secondary transition-all hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,255,163,0.4)] active:scale-[0.98] sm:min-h-0 sm:px-10 sm:py-5 sm:text-lg md:w-auto"
               >
                 View Upcoming Contests
               </button>
               <button
                 type="button"
-                className="w-full border-2 border-outline-variant bg-surface-container/50 px-10 py-5 font-headline text-lg font-bold uppercase tracking-widest text-on-surface transition-all hover:border-primary hover:bg-surface-container-high active:scale-[0.98] md:w-auto"
+                className="min-h-12 w-full border-2 border-outline-variant bg-surface-container/50 px-8 py-4 font-headline text-base font-bold uppercase tracking-widest text-on-surface transition-all hover:border-primary hover:bg-surface-container-high active:scale-[0.98] sm:min-h-0 sm:px-10 sm:py-5 sm:text-lg md:w-auto"
               >
                 Learn More
               </button>
@@ -267,10 +267,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative mx-auto max-w-7xl border-t border-outline-variant/30 px-8 py-32">
-          <div className="mb-16 flex items-center justify-between">
+        <section className="relative mx-auto max-w-7xl border-t border-outline-variant/30 px-4 py-16 sm:px-8 sm:py-24 md:py-32">
+          <div className="mb-10 flex items-center justify-between sm:mb-16">
             <div className="flex flex-col">
-              <h2 className="font-headline text-4xl font-bold uppercase tracking-tight text-glow">
+              <h2 className="font-headline text-3xl font-bold uppercase tracking-tight text-glow sm:text-4xl">
                 Upcoming Events
               </h2>
               <div className="mt-4 h-1 w-24 bg-primary" />
@@ -279,25 +279,25 @@ export default function Home() {
               Updating schedule...
             </div>
           </div>
-          <div className="grid gap-12 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2 md:gap-12">
             {EVENTS.map((event) => (
               <EventCard key={event.title} event={event} />
             ))}
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-t border-outline-variant bg-surface-container-high py-32">
+        <section className="relative overflow-hidden border-t border-outline-variant bg-surface-container-high py-16 sm:py-24 md:py-32">
           <div className="pointer-events-none absolute inset-0 opacity-10">
             <div className="absolute inset-0 bg-grid-pattern" />
           </div>
-          <div className="relative z-10 mx-auto max-w-4xl px-8 text-center">
+          <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-8">
             <span className="mb-6 block font-label text-[12px] uppercase tracking-[0.4em] text-secondary">
               Ready for Execution?
             </span>
-            <h2 className="mb-10 font-headline text-5xl font-extrabold uppercase tracking-tighter text-glow md:text-7xl">
+            <h2 className="mb-8 font-headline text-3xl font-extrabold uppercase tracking-tighter text-glow sm:mb-10 sm:text-4xl md:text-6xl lg:text-7xl">
               SACC_2026: INITIALIZE REGISTRATION
             </h2>
-            <p className="mx-auto mb-12 max-w-2xl font-body text-xl font-light leading-relaxed text-on-surface-variant">
+            <p className="mx-auto mb-10 max-w-2xl font-body text-base font-light leading-relaxed text-on-surface-variant sm:mb-12 sm:text-lg md:text-xl">
               Battle the Pacific Northwest&apos;s elite algorithmic talent.
               Secure your terminal for the flagship 4-hour competitive
               programming event of the season. Systems ready.
@@ -305,7 +305,7 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/sacc"
-                className="w-full bg-primary px-12 py-5 font-headline text-lg font-bold uppercase tracking-widest text-on-primary shadow-[0_0_20px_rgba(0,240,255,0.2)] hover:brightness-110 sm:w-auto"
+                className="touch-manipulation flex min-h-12 w-full items-center justify-center bg-primary px-10 py-4 font-headline text-base font-bold uppercase tracking-widest text-on-primary shadow-[0_0_20px_rgba(0,240,255,0.2)] hover:brightness-110 sm:min-h-0 sm:w-auto sm:px-12 sm:py-5 sm:text-lg"
               >
                 More Details
               </Link>
