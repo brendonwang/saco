@@ -147,7 +147,7 @@ export default function Navbar({ activePath }: { activePath: string }) {
               aria-expanded={open}
               aria-controls={panelId}
               aria-label={open ? "Close menu" : "Open menu"}
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => {setOpen((v) => !v)}}
             >
               <span className="relative inline-block h-5 w-5 shrink-0">
                 <Menu
