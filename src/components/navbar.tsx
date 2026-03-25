@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 const NAV_LINKS = [
   { label: "HOME", href: "/" },
@@ -18,28 +19,96 @@ function navLinkClass(active: boolean) {
 }
 
 export default function Navbar({ activePath }: { activePath: string }) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [drawerMounted, setDrawerMounted] = useState(false);
+  const [drawerVisible, setDrawerVisible] = useState(false);
   const panelId = useId();
+  const prevPathname = useRef<string | null>(null);
 
+  // Close the mobile drawer when navigation finishes (pathname updates), not on link click — avoids an empty chrome gap under slow networks/throttling.
+  useEffect(() => {
+    if (prevPathname.current === null) {
+      prevPathname.current = pathname;
+      return;
+    }
+    if (prevPathname.current === pathname) return;
+    prevPathname.current = pathname;
+    const id = requestAnimationFrame(() => setOpen(false));
+    return () => cancelAnimationFrame(id);
+  }, [pathname]);
+
+  // Open: defer setState into rAF (satisfies eslint); mount hidden then two more rAFs before showing so the enter transition reliably runs on first open.
   useEffect(() => {
     if (!open) return;
+    let cancelled = false;
+    let idB = 0;
+    let idC = 0;
+    const idA = requestAnimationFrame(() => {
+      if (cancelled) return;
+      setDrawerMounted(true);
+      setDrawerVisible(false);
+      idB = requestAnimationFrame(() => {
+        idC = requestAnimationFrame(() => {
+          if (!cancelled) setDrawerVisible(true);
+        });
+      });
+    });
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(idA);
+      cancelAnimationFrame(idB);
+      cancelAnimationFrame(idC);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (open) return;
+    let cancelled = false;
+    const id = requestAnimationFrame(() => {
+      if (!cancelled) setDrawerVisible(false);
+    });
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(id);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open && drawerMounted) {
+      const t = window.setTimeout(() => setDrawerMounted(false), 320);
+      return () => window.clearTimeout(t);
+    }
+  }, [open, drawerMounted]);
+
+  useEffect(() => {
+    if (!drawerMounted) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = prev;
     };
+  }, [drawerMounted]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
   return (
     <>
       {/* ── Header bar ── */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b-[0.5px] border-cyan-900/50 bg-[#0A0B0E] pt-[env(safe-area-inset-top)] shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+      <header className="fixed inset-x-0 top-0 z-50 border-b-[0.5px] border-cyan-900/50 bg-[#0A0B0E]/80 pt-[env(safe-area-inset-top)] shadow-[0_4px_20px_rgba(0,0,0,0.5)] backdrop-blur-md backdrop-saturate-150">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4 md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:px-8">
           <div className="min-w-0 justify-self-start font-headline text-xl font-black tracking-tighter sm:text-2xl">
             <Link
               href="/"
               className="flex items-center gap-2 sm:gap-3"
-              onClick={() => setOpen(false)}
+              onClick={() => pathname === "/" && setOpen(false)}
             >
               <Image
                 src="/SACO Logo.svg"
@@ -80,30 +149,45 @@ export default function Navbar({ activePath }: { activePath: string }) {
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen((v) => !v)}
             >
-              {open ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
+              <span className="relative inline-block h-5 w-5 shrink-0">
+                <Menu
+                  aria-hidden
+                  className={`pointer-events-none absolute left-0 top-0 h-5 w-5 transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ${
+                    open
+                      ? "scale-75 rotate-90 opacity-0"
+                      : "scale-100 rotate-0 opacity-100"
+                  }`}
+                />
+                <X
+                  aria-hidden
+                  className={`pointer-events-none absolute left-0 top-0 h-5 w-5 transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ${
+                    open
+                      ? "scale-100 rotate-0 opacity-100"
+                      : "scale-75 -rotate-90 opacity-0"
+                  }`}
+                />
+              </span>
             </button>
           </div>
         </div>
       </header>
 
       {/* ── Mobile drawer (sibling, not child/portal) ── */}
-      {open && (
-        <div className="fixed inset-0 z-40 md:hidden" aria-hidden="false">
+      {drawerMounted && (
+        <div className="fixed inset-0 z-40 md:hidden" aria-hidden={!drawerVisible}>
+          {/* Start below the header so the scrim is not behind backdrop-blur (fixes glitched blur). */}
           <div
-            className="absolute inset-0 bg-black/60"
+            className={`absolute inset-x-0 bottom-0 top-[max(4rem,calc(3.5rem+env(safe-area-inset-top,0px)))] bg-black/60 transition-opacity duration-300 ease-out motion-reduce:transition-none ${
+              drawerVisible ? "opacity-100" : "opacity-0"
+            }`}
             onClick={() => setOpen(false)}
-            onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
-            role="button"
-            tabIndex={-1}
-            aria-label="Close menu"
+            role="presentation"
           />
           <div
             id={panelId}
-            className="absolute inset-y-0 right-0 flex w-[min(100vw,20rem)] flex-col border-l border-cyan-900/50 bg-[#0A0B0E] pb-[env(safe-area-inset-bottom)] pt-[calc(3.5rem+env(safe-area-inset-top))] shadow-2xl"
+            className={`absolute inset-y-0 right-0 flex w-[min(100vw,20rem)] flex-col border-l border-cyan-900/50 bg-[#0A0B0E] pb-[env(safe-area-inset-bottom)] pt-[calc(3.5rem+env(safe-area-inset-top))] shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
+              drawerVisible ? "translate-x-0" : "translate-x-full"
+            }`}
             role="dialog"
             aria-modal="true"
             aria-label="Site navigation"
@@ -123,7 +207,7 @@ export default function Navbar({ activePath }: { activePath: string }) {
                         ? "font-bold text-cyan-400"
                         : "text-slate-400 hover:text-cyan-200"
                     }`}
-                    onClick={() => setOpen(false)}
+                    onClick={() => pathname === href && setOpen(false)}
                   >
                     {label}
                   </Link>
