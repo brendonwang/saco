@@ -7,7 +7,7 @@ import Navbar from "@/components/navbar";
 
 const SACC_STATS = [
   { label: "Prize Pool", value: "$500" },
-  { label: "Duration", value: "4 HR" },
+  { label: "Duration", value: "3 HR" },
   { label: "Team Size", value: "3" },
   { label: "Problems", value: "8" },
 ] as const;
