@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: "HOME", href: "/" },
   { label: "SACC", href: "/sacc" },
   { label: "ABOUT US", href: "/about" },
+  { label: "SPONSORS", href: "/sponsors" },
 ] as const;
 
 function navLinkClass(active: boolean) {

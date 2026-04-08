@@ -4,6 +4,7 @@ const QUICK_LINKS = [
   { label: "HOME", href: "/" },
   { label: "SACC", href: "/sacc" },
   { label: "ABOUT US", href: "/about" },
+  { label: "SPONSORS", href: "/sponsors" },
 ] as const;
 
 export default function Footer() {
