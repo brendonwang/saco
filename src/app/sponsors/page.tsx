@@ -47,7 +47,7 @@ export default function SponsorsPage() {
               {SPONSORS.map((sponsor) => (
                 <li key={sponsor.src}>
                   <div className="flex h-full flex-col border border-outline-variant bg-surface-container p-8 transition-colors hover:border-primary/40 sm:p-10">
-                    <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-lg bg-[#f8fafc] p-8 shadow-inner ring-1 ring-black/5 sm:p-10">
+                    <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-lg p-8 shadow-inner ring-1 ring-black/5 sm:p-10">
                       <div className="relative mx-auto aspect-[5/2] w-full">
                         <Image
                           src={sponsor.src}
