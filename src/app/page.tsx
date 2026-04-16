@@ -299,7 +299,7 @@ export default function Home() {
             </h2>
             <p className="mx-auto mb-10 max-w-2xl font-body text-base font-light leading-relaxed text-on-surface-variant sm:mb-12 sm:text-lg md:text-xl">
               Battle the Pacific Northwest&apos;s elite algorithmic talent.
-              Secure your terminal for the flagship 4-hour competitive
+              Secure your terminal for the flagship 3-hour competitive
               programming event of the season. Systems ready.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
