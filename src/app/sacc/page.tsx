@@ -28,7 +28,7 @@ function StatCard({ label, value }: { label: string; value: string }) {
 const FAQ_ITEMS = [
   {
     q: "Who can participate?",
-    a: "Any high school student in the Pacific Northwest. You don't need prior competitive programming experience — beginners are welcome.",
+    a: "Any pre-college student may participate. You don't need prior competitive programming experience — beginners are welcome.",
   },
   {
     q: "How are teams formed?",
@@ -42,9 +42,10 @@ const FAQ_ITEMS = [
     q: "Is the contest in-person or online?",
     a: "SACC 2026 is fully in-person in Seattle. We'll announce the exact venue closer to the event date.",
   },
+  // TODO: Add Free Pizza Lunch
   {
     q: "What should I bring?",
-    a: "A laptop, charger, and photo ID. Internet access is provided but restricted to the contest judge only — no external resources.",
+    a: "A laptop and a charger. Internet access is provided.",
   },
 ] as const;
 
