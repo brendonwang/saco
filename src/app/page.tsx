@@ -251,12 +251,12 @@ export default function Home() {
               the Pacific Northwest.
             </p>
             <div className="mx-auto flex w-full max-w-md flex-col items-stretch justify-center gap-4 touch-manipulation sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-6">
-              <button
-                type="button"
-                className="min-h-12 w-full bg-secondary px-8 py-4 font-headline text-base font-bold uppercase tracking-widest text-on-secondary transition-all hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,255,163,0.4)] active:scale-[0.98] sm:min-h-0 sm:px-10 sm:py-5 sm:text-lg md:w-auto"
+              <Link
+                href="/sacc"
+                className="flex min-h-12 w-full items-center justify-center bg-secondary px-8 py-4 font-headline text-base font-bold uppercase tracking-widest text-on-secondary transition-all hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,255,163,0.4)] active:scale-[0.98] sm:min-h-0 sm:px-10 sm:py-5 sm:text-lg md:w-auto"
               >
                 View Upcoming Contests
-              </button>
+              </Link>
               <button
                 type="button"
                 className="min-h-12 w-full border-2 border-outline-variant bg-surface-container/50 px-8 py-4 font-headline text-base font-bold uppercase tracking-widest text-on-surface transition-all hover:border-primary hover:bg-surface-container-high active:scale-[0.98] sm:min-h-0 sm:px-10 sm:py-5 sm:text-lg md:w-auto"
