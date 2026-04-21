@@ -115,7 +115,7 @@ export default function SaccPage() {
               <p className="mx-auto max-w-2xl text-base text-[#64748B] sm:text-lg md:text-2xl">
                 Compete in teams of three against top high school programmers
                 in the Pacific Northwest. Solve real algorithmic challenges,
-                win $5,000, and prove your skills.
+                win $500, and prove your skills.
               </p>
             </div>
 
