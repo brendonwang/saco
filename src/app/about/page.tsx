@@ -56,7 +56,7 @@ export default function AboutPage() {
                 <p className="font-body text-base font-light leading-relaxed text-on-surface-variant sm:text-lg">
                   The Seattle Area Coding Organization is a student-led
                   initiative connecting competitive programmers across the
-                  Pacific Northwest. Founded by high school students who wanted
+                  Pacific Northwest. Founded by students who wanted
                   to build a stronger local community around algorithmic
                   problem-solving, SACO has grown into the region&apos;s premier
                   hub for aspiring coders.

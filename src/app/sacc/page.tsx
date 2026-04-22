@@ -113,7 +113,7 @@ export default function SaccPage() {
                 SACC_2026
               </h1>
               <p className="mx-auto max-w-2xl text-base text-[#64748B] sm:text-lg md:text-2xl">
-                Compete in teams of three against top high school programmers
+                Compete in teams of three against top pre-college programmers
                 in the Pacific Northwest. Solve real algorithmic challenges,
                 win $500, and prove your skills.
               </p>

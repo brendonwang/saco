@@ -17,7 +17,7 @@ export default function Footer() {
           </div>
           <p className="font-body text-sm leading-relaxed text-slate-400">
             Seattle Area Coding Organization. Student-run competitive
-            programming for high school coders across the Pacific Northwest.
+            programming for pre-college students across the Pacific Northwest.
           </p>
         </div>
 

@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "SACO",
   description:
-    "Seattle Area Coding Organization — competitive programming and algorithmic thinking for high school coders across the Pacific Northwest.",
+    "Seattle Area Coding Organization — competitive programming and algorithmic thinking for pre-college coders across the Pacific Northwest.",
 };
 
 export const viewport: Viewport = {

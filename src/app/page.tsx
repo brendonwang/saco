@@ -247,7 +247,7 @@ export default function Home() {
               <span className="font-medium text-on-surface">
                 competitive programming
               </span>
-              , algorithmic thinking, and connecting high school coders across
+              , algorithmic thinking, and connecting pre-college coders across
               the Pacific Northwest.
             </p>
             <div className="mx-auto flex w-full max-w-md flex-col items-stretch justify-center gap-4 touch-manipulation sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-6">
