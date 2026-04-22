@@ -257,12 +257,6 @@ export default function Home() {
               >
                 View Upcoming Contests
               </Link>
-              <button
-                type="button"
-                className="min-h-12 w-full border-2 border-outline-variant bg-surface-container/50 px-8 py-4 font-headline text-base font-bold uppercase tracking-widest text-on-surface transition-all hover:border-primary hover:bg-surface-container-high active:scale-[0.98] sm:min-h-0 sm:px-10 sm:py-5 sm:text-lg md:w-auto"
-              >
-                Learn More
-              </button>
             </div>
           </div>
         </section>
