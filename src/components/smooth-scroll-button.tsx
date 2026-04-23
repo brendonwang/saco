@@ -1,12 +1,13 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 type SmoothScrollButtonProps = {
   children: ReactNode;
   className?: string;
   durationMs?: number;
-  landingGapPx?: number;
+  // Positive values land slightly farther down the page than the target top.
+  landingOffsetPx?: number;
   targetId: string;
 };
 
@@ -17,15 +18,28 @@ function easeOutCubic(progress: number) {
 export default function SmoothScrollButton({
   children,
   className,
-  durationMs = 500,
-  landingGapPx = 32,
+  durationMs = 1500,
+  landingOffsetPx = 56,
   targetId,
 }: SmoothScrollButtonProps) {
-  const handleClick = () => {
-    if (typeof window === "undefined") return;
+  const rafIdRef = useRef<number | null>(null);
 
+  useEffect(() => {
+    return () => {
+      if (rafIdRef.current !== null) {
+        window.cancelAnimationFrame(rafIdRef.current);
+      }
+    };
+  }, []);
+
+  const handleClick = () => {
     const target = document.getElementById(targetId);
     if (!target) return;
+
+    if (rafIdRef.current !== null) {
+      window.cancelAnimationFrame(rafIdRef.current);
+      rafIdRef.current = null;
+    }
 
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -36,13 +50,13 @@ export default function SmoothScrollButton({
     const scrollMarginTop = Number.parseFloat(
       window.getComputedStyle(target).scrollMarginTop || "0",
     );
-    const anchorOffset = headerHeight || scrollMarginTop;
+    const anchorOffset = Math.max(headerHeight, scrollMarginTop);
     const startY = window.scrollY;
     const rawTargetY =
       target.getBoundingClientRect().top +
       window.scrollY -
       anchorOffset +
-      landingGapPx;
+      landingOffsetPx;
     const maxScrollY =
       document.documentElement.scrollHeight - window.innerHeight;
     const targetY = Math.max(0, Math.min(rawTargetY, maxScrollY));
@@ -63,11 +77,13 @@ export default function SmoothScrollButton({
       window.scrollTo({ top: nextY, behavior: "auto" });
 
       if (progress < 1) {
-        window.requestAnimationFrame(step);
+        rafIdRef.current = window.requestAnimationFrame(step);
+      } else {
+        rafIdRef.current = null;
       }
     };
 
-    window.requestAnimationFrame(step);
+    rafIdRef.current = window.requestAnimationFrame(step);
   };
 
   return (
