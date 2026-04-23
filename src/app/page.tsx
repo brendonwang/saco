@@ -86,7 +86,7 @@ const EVENTS = [
     date: "MAY 23, 2026",
     title: "SACC 2026",
     description:
-      "The Seattle Area Computing Competition is a 4-hour algorithmic battle for competitors. It is a regional contest that brings together competitors from across the Pacific Northwest.",
+      "The Seattle Area Computing Competition is a 3-hour algorithmic battle for competitors. It is a regional contest that brings together competitors from across the Pacific Northwest.",
     cta: "View Details",
     href: "/sacc",
   },
