@@ -6,7 +6,7 @@ type SmoothScrollButtonProps = {
   children: ReactNode;
   className?: string;
   durationMs?: number;
-  landingOffsetPx?: number;
+  landingGapPx?: number;
   targetId: string;
 };
 
@@ -18,7 +18,7 @@ export default function SmoothScrollButton({
   children,
   className,
   durationMs = 1500,
-  landingOffsetPx = 96,
+  landingGapPx = 32,
   targetId,
 }: SmoothScrollButtonProps) {
   const handleClick = () => {
@@ -31,15 +31,21 @@ export default function SmoothScrollButton({
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
+    const header = document.querySelector("header");
+    const headerHeight = header instanceof HTMLElement ? header.offsetHeight : 0;
     const scrollMarginTop = Number.parseFloat(
       window.getComputedStyle(target).scrollMarginTop || "0",
     );
+    const anchorOffset = headerHeight || scrollMarginTop;
     const startY = window.scrollY;
-    const targetY =
+    const rawTargetY =
       target.getBoundingClientRect().top +
       window.scrollY -
-      scrollMarginTop +
-      landingOffsetPx;
+      anchorOffset +
+      landingGapPx;
+    const maxScrollY =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const targetY = Math.max(0, Math.min(rawTargetY, maxScrollY));
 
     if (prefersReducedMotion || Math.abs(targetY - startY) < 1) {
       window.scrollTo({ top: targetY, behavior: "auto" });
