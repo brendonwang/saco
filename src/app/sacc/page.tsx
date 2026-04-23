@@ -42,7 +42,10 @@ const FAQ_ITEMS = [
     q: "Is the contest in-person or online?",
     a: "SACC 2026 is fully in-person in Seattle. We'll announce the exact venue closer to the event date.",
   },
-  // TODO: Add Free Pizza Lunch
+  {
+    q: "Will food be provided?",
+    a: "Yes. We'll provide a free pizza lunch for all contestants during the competition.",
+  },
   {
     q: "What should I bring?",
     a: "A laptop and a charger. Internet access is provided.",
