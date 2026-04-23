@@ -5,7 +5,7 @@ import { useEffect, useRef, type ReactNode } from "react";
 export default function SmoothScrollButton({
   children,
   className,
-  durationMs = 500,
+  durationMs = 900,
   topGapPx = 0,
   targetId,
 }: {children: ReactNode, className?: string, durationMs?: number, topGapPx?: number, targetId: string}) {
