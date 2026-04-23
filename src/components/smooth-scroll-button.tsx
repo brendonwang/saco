@@ -17,7 +17,7 @@ function easeOutCubic(progress: number) {
 export default function SmoothScrollButton({
   children,
   className,
-  durationMs = 1500,
+  durationMs = 500,
   landingGapPx = 32,
   targetId,
 }: SmoothScrollButtonProps) {
