@@ -254,6 +254,7 @@ export default function Home() {
             <div className="mx-auto flex w-full max-w-md flex-col items-stretch justify-center gap-4 touch-manipulation sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-6">
               <SmoothScrollButton
                 targetId="upcoming-events"
+                topGapPx={24}
                 className="flex min-h-12 w-full items-center justify-center bg-secondary px-8 py-4 font-headline text-base font-bold uppercase tracking-widest text-on-secondary transition-all hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,255,163,0.4)] active:scale-[0.98] sm:min-h-0 sm:px-10 sm:py-5 sm:text-lg md:w-auto"
               >
                 View Upcoming Contests
@@ -262,13 +263,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section
-          id="upcoming-events"
-          className="relative mx-auto max-w-7xl scroll-mt-28 border-t border-outline-variant/30 px-4 py-16 sm:px-8 sm:py-24 md:py-32"
-        >
+        <section className="relative mx-auto max-w-7xl scroll-mt-28 border-t border-outline-variant/30 px-4 py-16 sm:px-8 sm:py-24 md:py-32">
           <div className="mb-10 flex items-center justify-between sm:mb-16">
             <div className="flex flex-col">
-              <h2 className="font-headline text-3xl font-bold uppercase tracking-tight text-glow sm:text-4xl">
+              <h2 id="upcoming-events" className="font-headline text-3xl font-bold uppercase tracking-tight text-glow sm:text-4xl">
                 Upcoming Events
               </h2>
               <div className="mt-4 h-1 w-24 bg-primary" />

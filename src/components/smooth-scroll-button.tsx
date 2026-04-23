@@ -2,32 +2,19 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 
-type SmoothScrollButtonProps = {
-  children: ReactNode;
-  className?: string;
-  durationMs?: number;
-  // Positive values land slightly farther down the page than the target top.
-  landingOffsetPx?: number;
-  targetId: string;
-};
-
-function easeOutCubic(progress: number) {
-  return 1 - Math.pow(1 - progress, 3);
-}
-
 export default function SmoothScrollButton({
   children,
   className,
-  durationMs = 1500,
-  landingOffsetPx = 56,
+  durationMs = 500,
+  topGapPx = 0,
   targetId,
-}: SmoothScrollButtonProps) {
-  const rafIdRef = useRef<number | null>(null);
+}: {children: ReactNode, className?: string, durationMs?: number, topGapPx?: number, targetId: string}) {
+  const animationFrameIdRef = useRef<number | null>(null);
 
   useEffect(() => {
     return () => {
-      if (rafIdRef.current !== null) {
-        window.cancelAnimationFrame(rafIdRef.current);
+      if (animationFrameIdRef.current !== null) {
+        window.cancelAnimationFrame(animationFrameIdRef.current);
       }
     };
   }, []);
@@ -36,32 +23,36 @@ export default function SmoothScrollButton({
     const target = document.getElementById(targetId);
     if (!target) return;
 
-    if (rafIdRef.current !== null) {
-      window.cancelAnimationFrame(rafIdRef.current);
-      rafIdRef.current = null;
+    if (animationFrameIdRef.current !== null) {
+      window.cancelAnimationFrame(animationFrameIdRef.current);
+      animationFrameIdRef.current = null;
     }
 
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-
     const header = document.querySelector("header");
-    const headerHeight = header instanceof HTMLElement ? header.offsetHeight : 0;
+    const headerHeight =
+      header instanceof HTMLElement ? header.getBoundingClientRect().height : 0;
     const scrollMarginTop = Number.parseFloat(
       window.getComputedStyle(target).scrollMarginTop || "0",
     );
-    const anchorOffset = Math.max(headerHeight, scrollMarginTop);
     const startY = window.scrollY;
-    const rawTargetY =
-      target.getBoundingClientRect().top +
-      window.scrollY -
-      anchorOffset +
-      landingOffsetPx;
     const maxScrollY =
       document.documentElement.scrollHeight - window.innerHeight;
-    const targetY = Math.max(0, Math.min(rawTargetY, maxScrollY));
+    const targetY = Math.min(
+      Math.max(
+        target.getBoundingClientRect().top +
+          startY -
+          headerHeight -
+          scrollMarginTop -
+          topGapPx,
+        0,
+      ),
+      maxScrollY,
+    );
 
-    if (prefersReducedMotion || Math.abs(targetY - startY) < 1) {
+    if (prefersReducedMotion || durationMs <= 0 || Math.abs(targetY - startY) < 1) {
       window.scrollTo({ top: targetY, behavior: "auto" });
       return;
     }
@@ -71,19 +62,22 @@ export default function SmoothScrollButton({
     const step = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / durationMs, 1);
-      const animationProgress = easeOutCubic(progress);
-      const nextY = startY + (targetY - startY) * animationProgress;
+      const easedProgress = 1 - (1 - progress) ** 3;
 
-      window.scrollTo({ top: nextY, behavior: "auto" });
+      window.scrollTo({
+        top: startY + (targetY - startY) * easedProgress,
+        behavior: "auto",
+      });
 
       if (progress < 1) {
-        rafIdRef.current = window.requestAnimationFrame(step);
-      } else {
-        rafIdRef.current = null;
+        animationFrameIdRef.current = window.requestAnimationFrame(step);
+        return;
       }
+
+      animationFrameIdRef.current = null;
     };
 
-    rafIdRef.current = window.requestAnimationFrame(step);
+    animationFrameIdRef.current = window.requestAnimationFrame(step);
   };
 
   return (
