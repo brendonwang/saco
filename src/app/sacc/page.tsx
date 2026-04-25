@@ -128,7 +128,7 @@ export default function SaccPage() {
               href="https://docs.google.com/forms/d/e/1FAIpQLScdr-aDxrZaHumGMvKSUixdmFY9L9Hor2aEvaHHa-31qWTYFw/viewform?usp=publish-editor"
               target="_blank"
               rel="noreferrer"
-              className="touch-manipulation flex min-h-12 w-full max-w-sm items-center justify-center gap-3 bg-[#00F0FF] px-6 py-4 font-sacc-mono text-base font-bold uppercase tracking-widest text-[#0A0B0E] transition-all hover:brightness-110 hover:shadow-[0_0_25px_rgba(0,240,255,0.6)] sm:min-h-0 sm:w-auto sm:max-w-none sm:px-8 sm:text-lg"
+              className="touch-manipulation flex min-h-12 w-full max-w-sm items-center justify-center gap-3 bg-[#00F0FF] px-6 py-4 font-sacc-mono text-base font-bold uppercase tracking-widest text-[#0A0B0E] shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-[filter,box-shadow] hover:brightness-110 hover:shadow-[0_0_25px_rgba(0,240,255,0.6)] sm:min-h-0 sm:w-auto sm:max-w-none sm:px-8 sm:text-lg"
             >
               <TerminalIcon className="h-6 w-6 shrink-0" />
               Register Now
