@@ -54,18 +54,18 @@ export default function AboutPage() {
             <div className="grid gap-16" /*md:grid-cols-2*/>
               <div className="space-y-6">
                 <p className="font-body text-base font-light leading-relaxed text-on-surface-variant sm:text-lg">
-                  The Seattle Area Coding Organization is a student-led
-                  initiative connecting competitive programmers across the
-                  Pacific Northwest. Founded by students who wanted
-                  to build a stronger local community around algorithmic
-                  problem-solving, SACO has grown into the region&apos;s premier
-                  hub for aspiring coders.
+                  The Seattle Area Coding Organization is a student-run
+                  community that helps pre-college students learn, practice,
+                  and compete in programming. Through contests, workshops,
+                  study groups, and shared resources, SACO connects coders
+                  across the Pacific Northwest and supports students at every
+                  skill level, from beginners to experienced competitive
+                  programmers.
                 </p>
                 <p className="font-body text-base font-light leading-relaxed text-on-surface-variant sm:text-lg">
                   We believe in learning by doing. Our events range from
                   beginner-friendly workshops to the annual Seattle Area
-                  Computing Cup — a high-stakes contest that draws hundreds of
-                  participants from dozens of schools.
+                  Coding Competition.
                 </p>
               </div>
 
