@@ -17,10 +17,12 @@ const SPONSOR_TIERS = [
       {
         name: "Coding Mind",
         src: "/sponsors/coding_mind.png",
+        href: "https://codingmind.com/",
       },
       {
         name: "X-Camp",
         src: "/sponsors/x-camp.svg",
+        href: "https://x-camp.academy/",
       },
     ],
   },
@@ -92,7 +94,12 @@ export default function SponsorsPage() {
                     <ul className="grid gap-6 sm:grid-cols-2 sm:gap-10">
                       {tier.sponsors.map((sponsor) => (
                         <li key={sponsor.src}>
-                          <div className="flex h-full flex-col border border-outline-variant bg-surface-container p-8 transition-colors hover:border-primary/40 sm:p-10">
+                          <a
+                            href={sponsor.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex h-full flex-col border border-outline-variant bg-surface-container p-8 transition-colors hover:border-primary/40 focus:outline-none focus-visible:border-primary/70 focus-visible:ring-2 focus-visible:ring-primary/30 sm:p-10"
+                          >
                             <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-lg p-8 shadow-inner ring-1 ring-black/5 sm:p-10">
                               <div className="relative mx-auto aspect-[5/2] w-full">
                                 <Image
@@ -107,7 +114,7 @@ export default function SponsorsPage() {
                             <p className="mt-6 text-center font-label text-[11px] uppercase tracking-widest text-on-surface">
                               {sponsor.name}
                             </p>
-                          </div>
+                          </a>
                         </li>
                       ))}
                     </ul>
