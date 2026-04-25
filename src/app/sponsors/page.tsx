@@ -124,7 +124,6 @@ export default function SponsorsPage() {
               aria-labelledby="sponsor-contact"
               className="relative mt-16 overflow-hidden bg-surface-container px-6 py-8 shadow-[0_0_28px_rgba(0,240,255,0.08)] sm:mt-20 sm:px-10 sm:py-12"
             >
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
               <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-primary/10 blur-3xl" />
               <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-secondary/10 blur-3xl" />
 
