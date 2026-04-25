@@ -111,9 +111,6 @@ export default function SponsorsPage() {
                                 />
                               </div>
                             </div>
-                            <p className="mt-6 text-center font-label text-[11px] uppercase tracking-widest text-on-surface">
-                              {sponsor.name}
-                            </p>
                           </a>
                         </li>
                       ))}
