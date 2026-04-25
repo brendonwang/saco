@@ -65,8 +65,7 @@ export default function AboutPage() {
                 <p className="font-body text-base font-light leading-relaxed text-on-surface-variant sm:text-lg">
                   We believe in learning by doing. Our events range from
                   beginner-friendly workshops to the annual Seattle Area
-                  Coding Competition — a high-stakes contest that draws hundreds of
-                  participants from dozens of schools.
+                  Coding Competition.
                 </p>
               </div>
 
