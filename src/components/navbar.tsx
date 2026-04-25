@@ -16,7 +16,7 @@ const NAV_LINKS = [
 function navLinkClass(active: boolean) {
   return active
     ? "relative inline-flex items-center justify-center pb-2 font-bold uppercase tracking-[0.2em] text-[12px] text-cyan-400 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-cyan-400"
-    : "inline-flex items-center justify-center uppercase tracking-[0.2em] text-[12px] text-slate-500 transition-all duration-300 hover:bg-cyan-400/10 hover:text-cyan-200";
+    : "inline-flex items-center justify-center uppercase tracking-[0.2em] text-[12px] text-slate-500 transition-colors duration-300 hover:text-cyan-200";
 }
 
 export default function Navbar({ activePath }: { activePath: string }) {
@@ -144,7 +144,7 @@ export default function Navbar({ activePath }: { activePath: string }) {
           <div className="flex shrink-0 items-center justify-end md:justify-self-end">
             <button
               type="button"
-              className="touch-manipulation flex h-11 w-11 items-center justify-center rounded border border-cyan-900/60 text-cyan-300 transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary md:hidden"
+              className="touch-manipulation flex h-11 w-11 items-center justify-center rounded border border-cyan-900/60 text-cyan-300 transition-colors hover:border-primary/50 hover:text-primary md:hidden"
               aria-expanded={open}
               aria-controls={panelId}
               aria-label={open ? "Close menu" : "Open menu"}
