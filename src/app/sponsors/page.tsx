@@ -17,11 +17,13 @@ const SPONSOR_TIERS = [
       {
         name: "Coding Mind",
         src: "/sponsors/coding_mind.png",
+        logoClassName: "object-contain",
         href: "https://codingmind.com/",
       },
       {
         name: "X-Camp",
         src: "/sponsors/x-camp.svg",
+        logoClassName: "object-contain",
         href: "https://x-camp.academy/",
       },
     ],
@@ -30,7 +32,20 @@ const SPONSOR_TIERS = [
     name: "Gold",
     labelClass: "border-yellow-300/40 text-yellow-300",
     ruleClass: "bg-yellow-300",
-    sponsors: [],
+    sponsors: [
+      {
+        name: "Jane Street",
+        src: "/sponsors/jane-street.svg",
+        logoClassName: "object-contain invert",
+        href: "https://www.janestreet.com/",
+      },
+      {
+        name: "Pagliacci",
+        src: "/sponsors/pagliacci.svg",
+        logoClassName: "object-contain",
+        href: "https://www.pagliacci.com/",
+      },
+    ],
   },
   {
     name: "Silver",
@@ -42,9 +57,16 @@ const SPONSOR_TIERS = [
     name: "Bronze",
     labelClass: "border-amber-600/40 text-amber-500",
     ruleClass: "bg-amber-600",
-    sponsors: [],
+    sponsors: [
+      {
+        name: "Interview Cake",
+        src: "/sponsors/interview-cake.svg",
+        logoClassName: "object-contain",
+        href: "https://www.interviewcake.com/",
+      },
+    ],
   },
-] as const;
+];
 
 export default function SponsorsPage() {
   return (
