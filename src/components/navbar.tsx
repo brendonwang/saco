@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 
 const NAV_LINKS = [
@@ -144,27 +143,37 @@ export default function Navbar({ activePath }: { activePath: string }) {
           <div className="flex shrink-0 items-center justify-end md:justify-self-end">
             <button
               type="button"
-              className="touch-manipulation flex h-11 w-11 items-center justify-center rounded border border-cyan-900/60 text-cyan-300 transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary md:hidden"
+              className="group touch-manipulation flex h-11 w-11 items-center justify-center rounded border border-cyan-900/60 text-cyan-300 transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary md:hidden"
               aria-expanded={open}
               aria-controls={panelId}
               aria-label={open ? "Close menu" : "Open menu"}
-              onClick={() => {setOpen((v) => !v)}}
+              onClick={() => {
+                setOpen((v) => !v);
+              }}
             >
-              <span className="relative inline-block h-5 w-5 shrink-0">
-                <Menu
-                  aria-hidden
-                  className={`pointer-events-none absolute left-0 top-0 h-5 w-5 transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ${
+              <span
+                aria-hidden
+                className={`relative inline-block h-5 w-5 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+                  open ? "rotate-90 scale-[0.96]" : "rotate-0 scale-100"
+                }`}
+              >
+                <span
+                  className={`absolute left-0 h-[1.5px] w-5 rounded-full bg-current transition-[top,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
                     open
-                      ? "scale-75 rotate-90 opacity-0"
-                      : "scale-100 rotate-0 opacity-100"
+                      ? "top-1/2 -translate-y-1/2 rotate-45"
+                      : "top-[3px] translate-y-0 rotate-0"
                   }`}
                 />
-                <X
-                  aria-hidden
-                  className={`pointer-events-none absolute left-0 top-0 h-5 w-5 transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ${
+                <span
+                  className={`absolute left-0 top-1/2 h-[1.5px] w-5 -translate-y-1/2 rounded-full bg-current transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none ${
+                    open ? "scale-x-0 opacity-0" : "scale-x-100 opacity-100"
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 h-[1.5px] w-5 rounded-full bg-current transition-[top,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
                     open
-                      ? "scale-100 rotate-0 opacity-100"
-                      : "scale-75 -rotate-90 opacity-0"
+                      ? "top-1/2 -translate-y-1/2 -rotate-45"
+                      : "top-[15px] translate-y-0 rotate-0"
                   }`}
                 />
               </span>
