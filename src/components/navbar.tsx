@@ -15,7 +15,7 @@ const NAV_LINKS = [
 function navLinkClass(active: boolean) {
   return active
     ? "relative inline-flex items-center justify-center pb-2 font-bold uppercase tracking-[0.2em] text-[12px] text-cyan-400 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-cyan-400"
-    : "inline-flex items-center justify-center uppercase tracking-[0.2em] text-[12px] text-slate-500 transition-all duration-300 hover:bg-cyan-400/10 hover:text-cyan-200";
+    : "inline-flex items-center justify-center uppercase tracking-[0.2em] text-[12px] text-slate-500 transition-colors duration-300 hover:text-cyan-200";
 }
 
 export default function Navbar({ activePath }: { activePath: string }) {
