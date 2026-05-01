@@ -11,7 +11,12 @@ const LINES: Line[] = [
   { kind: "data", label: "STATUS:", value: "REGISTRATION OPEN" },
   { kind: "data", label: "DATE:", value: "MAY 23, 2026" },
   { kind: "data", label: "TIME:", value: "08:00 PDT" },
-  { kind: "data", label: "LOCATION:", value: "SEATTLE, WA" },
+  { kind: "data", label: "VENUE:", value: "CODING MIND ACADEMY" },
+  {
+    kind: "data",
+    label: "ADDRESS:",
+    value: "4006 148TH AVE NE, REDMOND, WA 98052",
+  },
   { kind: "data", label: "MODE:", value: "IN-PERSON" },
   { kind: "comment", text: "> Awaiting execution..." },
 ];
