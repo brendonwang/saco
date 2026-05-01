@@ -12,6 +12,17 @@ const SACC_STATS = [
   { label: "Problems", value: "8" },
 ] as const;
 
+const SACC_SCHEDULE = [
+  { time: "9:30am - 10:00am", event: "Arrival and check-in" },
+  {
+    time: "10:00am - 11:30am",
+    event: "Set-up, opening ceremony, practice round, etc",
+  },
+  { time: "11:30am - 12:30pm", event: "Lunch (provided)" },
+  { time: "12:30pm - 3:30pm", event: "Contest time" },
+  { time: "3:30pm - 4:00pm", event: "Awards ceremony" },
+] as const;
+
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="group flex flex-col items-center justify-center border border-[#1E293B] bg-[#14161C] p-6 text-center transition-colors hover:border-[#00F0FF]/50 sm:p-8">
@@ -141,6 +152,63 @@ export default function SaccPage() {
             {SACC_STATS.map((stat) => (
               <StatCard key={stat.label} label={stat.label} value={stat.value} />
             ))}
+          </div>
+        </section>
+
+        <section className="w-full max-w-[1200px] px-4 pb-20 sm:px-8 sm:pb-32">
+          <div className="mb-10 flex flex-col items-start">
+            <span className="mb-3 font-sacc-mono text-[10px] uppercase tracking-[0.4em] text-[#00FFA3]">
+              Timeline
+            </span>
+            <h2 className="font-sacc-mono text-3xl font-bold uppercase tracking-tight text-[#F1F5F9]">
+              Event Schedule
+            </h2>
+            <div className="mt-4 h-1 w-16 bg-[#00F0FF]" />
+          </div>
+
+          <div className="relative overflow-hidden border border-[#00F0FF]/40 bg-[#0D0F14] shadow-[0_0_30px_rgba(0,240,255,0.08)]">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_30%,rgba(0,255,163,0.12),transparent_30%),radial-gradient(circle_at_82%_55%,rgba(0,240,255,0.12),transparent_34%)]" />
+            <div className="relative overflow-x-auto">
+              <table className="w-full min-w-[720px] border-collapse text-left">
+                <caption className="sr-only">
+                  SACC 2026 event schedule
+                </caption>
+                <thead>
+                  <tr className="border-b border-[#00F0FF]/40 bg-[#00F0FF]/10">
+                    <th
+                      scope="col"
+                      className="w-5/12 border-r border-[#00F0FF]/40 px-6 py-5 text-center font-sacc-mono text-sm font-bold uppercase tracking-[0.25em] text-[#F1F5F9] sm:px-8 sm:py-7"
+                    >
+                      Time
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-5 text-center font-sacc-mono text-sm font-bold uppercase tracking-[0.25em] text-[#F1F5F9] sm:px-8 sm:py-7"
+                    >
+                      Event
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {SACC_SCHEDULE.map((item) => (
+                    <tr
+                      key={item.time}
+                      className="border-b border-[#00F0FF]/30 last:border-b-0"
+                    >
+                      <th
+                        scope="row"
+                        className="border-r border-[#00F0FF]/30 px-6 py-6 text-center font-sacc-display text-lg font-medium text-[#F1F5F9] sm:px-8 sm:py-8 sm:text-2xl"
+                      >
+                        {item.time}
+                      </th>
+                      <td className="px-6 py-6 text-center font-sacc-display text-lg leading-relaxed text-[#F1F5F9] sm:px-8 sm:py-8 sm:text-2xl">
+                        {item.event}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 
