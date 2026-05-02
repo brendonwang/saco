@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, MapPin } from "lucide-react";
 import Terminal from "./terminal";
 import Navbar from "@/components/navbar";
 
@@ -51,7 +51,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Is the contest in-person or online?",
-    a: "SACC 2026 is fully in-person in Seattle. We'll announce the exact venue closer to the event date.",
+    a: "SACC 2026 is fully in-person at Coding Mind Academy, 4006 148th Ave NE, Redmond, WA 98052.",
   },
   {
     q: "Will food be provided?",
@@ -153,6 +153,88 @@ export default function SaccPage() {
               <StatCard key={stat.label} label={stat.label} value={stat.value} />
             ))}
           </div>
+
+          <div className="mt-6 flex h-32 items-center border border-[#00F0FF]/35 bg-[#0D0F14]/90 p-4 text-left shadow-[0_0_24px_rgba(0,240,255,0.08)] sm:h-36 sm:p-6">
+            <div className="flex gap-4 sm:items-center">
+              <div className="relative flex h-14 w-14 shrink-0 items-center justify-center border border-[#00FFA3]/45 bg-[#00FFA3]/10 shadow-[inset_0_0_18px_rgba(0,255,163,0.08),0_0_22px_rgba(0,255,163,0.16)] sm:h-16 sm:w-16">
+                <div className="absolute -left-px -top-px h-3 w-3 border-l-2 border-t-2 border-[#00F0FF]" />
+                <div className="absolute -bottom-px -right-px h-3 w-3 border-b-2 border-r-2 border-[#00F0FF]" />
+                <div className="absolute inset-2 border border-[#00F0FF]/15" />
+                <MapPin
+                  className="relative z-10 h-8 w-8 text-[#00FFA3] drop-shadow-[0_0_10px_rgba(0,255,163,0.75)] sm:h-9 sm:w-9"
+                  strokeWidth={2.25}
+                />
+              </div>
+              <div>
+                <div className="mb-1 font-[family-name:var(--font-sacc-mono)] text-[10px] uppercase tracking-[0.35em] text-[#00FFA3]">
+                  Location
+                </div>
+                <p className="font-[family-name:var(--font-sacc-mono)] text-sm font-bold uppercase tracking-wide text-[#F1F5F9] sm:text-base">
+                  Coding Mind Academy
+                </p>
+                <p className="mt-1 text-sm leading-relaxed text-[#94A3B8] sm:text-base">
+                  4006 148th Ave NE, Redmond, WA 98052
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="w-full max-w-[1200px] px-4 pb-20 sm:px-8 sm:pb-32">
+          <div className="mb-10 flex flex-col items-start">
+            <span className="mb-3 font-sacc-mono text-[10px] uppercase tracking-[0.4em] text-[#00FFA3]">
+              Timeline
+            </span>
+            <h2 className="font-sacc-mono text-3xl font-bold uppercase tracking-tight text-[#F1F5F9]">
+              Event Schedule
+            </h2>
+            <div className="mt-4 h-1 w-16 bg-[#00F0FF]" />
+          </div>
+
+          <div className="relative overflow-hidden border border-[#00F0FF]/40 bg-[#0D0F14] shadow-[0_0_30px_rgba(0,240,255,0.08)]">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_30%,rgba(0,255,163,0.12),transparent_30%),radial-gradient(circle_at_82%_55%,rgba(0,240,255,0.12),transparent_34%)]" />
+            <div className="relative overflow-x-auto">
+              <table className="w-full min-w-[720px] border-collapse text-left">
+                <caption className="sr-only">
+                  SACC 2026 event schedule
+                </caption>
+                <thead>
+                  <tr className="border-b border-[#00F0FF]/40 bg-[#00F0FF]/10">
+                    <th
+                      scope="col"
+                      className="w-5/12 border-r border-[#00F0FF]/40 px-6 py-5 text-center font-sacc-mono text-sm font-bold uppercase tracking-[0.25em] text-[#F1F5F9] sm:px-8 sm:py-7"
+                    >
+                      Time
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-5 text-center font-sacc-mono text-sm font-bold uppercase tracking-[0.25em] text-[#F1F5F9] sm:px-8 sm:py-7"
+                    >
+                      Event
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {SACC_SCHEDULE.map((item) => (
+                    <tr
+                      key={item.time}
+                      className="border-b border-[#00F0FF]/30 last:border-b-0"
+                    >
+                      <th
+                        scope="row"
+                        className="border-r border-[#00F0FF]/30 px-6 py-6 text-center font-sacc-display text-lg font-medium text-[#F1F5F9] sm:px-8 sm:py-8 sm:text-2xl"
+                      >
+                        {item.time}
+                      </th>
+                      <td className="px-6 py-6 text-center font-sacc-display text-lg leading-relaxed text-[#F1F5F9] sm:px-8 sm:py-8 sm:text-2xl">
+                        {item.event}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </section>
 
         <section className="w-full max-w-[1200px] px-4 pb-20 sm:px-8 sm:pb-32">
@@ -217,7 +299,7 @@ export default function SaccPage() {
             <span className="mb-3 font-sacc-mono text-[10px] uppercase tracking-[0.4em] text-[#00FFA3]">
               Intel
             </span>
-            <h2 className="font-sacc-mono text-3xl font-bold uppercase tracking-tight text-[#F1F5F9]">
+            <h2 className="font-[family-name:var(--font-sacc-mono)] text-3xl font-bold uppercase tracking-tight text-[#F1F5F9]">
               Frequently Asked Questions
             </h2>
             <div className="mt-4 h-1 w-16 bg-[#00F0FF]" />
