@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
+import { Button, ExternalButton } from "@/components/button";
 
 const NAV_LINKS = [
   { label: "HOME", href: "/" },
@@ -12,6 +13,8 @@ const NAV_LINKS = [
   { label: "ABOUT US", href: "/about" },
   { label: "SPONSORS", href: "/sponsors" },
 ] as const;
+
+const DISCORD_URL = "https://discord.gg/s767nmxmg4";
 
 function navLinkClass(active: boolean) {
   return active
@@ -142,9 +145,19 @@ export default function Navbar({ activePath }: { activePath: string }) {
           </nav>
 
           <div className="flex shrink-0 items-center justify-end md:justify-self-end">
-            <button
+            <ExternalButton
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noreferrer"
+              size="nav"
+              variant="outlinePrimary"
+            >
+              Join Discord
+            </ExternalButton>
+            <Button
               type="button"
-              className="touch-manipulation flex h-11 w-11 items-center justify-center rounded border border-cyan-900/60 text-cyan-300 transition-colors hover:border-primary/50 hover:text-primary md:hidden"
+              size="icon"
+              variant="navIcon"
               aria-expanded={open}
               aria-controls={panelId}
               aria-label={open ? "Close menu" : "Open menu"}
@@ -168,7 +181,7 @@ export default function Navbar({ activePath }: { activePath: string }) {
                   }`}
                 />
               </span>
-            </button>
+            </Button>
           </div>
         </div>
       </header>
@@ -214,6 +227,15 @@ export default function Navbar({ activePath }: { activePath: string }) {
                   </Link>
                 );
               })}
+              <ExternalButton
+                href={DISCORD_URL}
+                target="_blank"
+                rel="noreferrer"
+                size="drawer"
+                variant="outlinePrimary"
+              >
+                Join Discord
+              </ExternalButton>
             </nav>
           </div>
         </div>
