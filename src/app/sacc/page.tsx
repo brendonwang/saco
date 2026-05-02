@@ -3,7 +3,10 @@
 import { useState } from "react";
 import { ChevronDown, MapPin } from "lucide-react";
 import Terminal from "./terminal";
+import { Button, ExternalButton } from "@/components/button";
 import Navbar from "@/components/navbar";
+
+const DISCORD_URL = "https://discord.gg/s767nmxmg4";
 
 const SACC_STATS = [
   { label: "Prize Pool", value: "$500" },
@@ -67,10 +70,11 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="border-b border-[#1E293B]">
-      <button
+      <Button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="touch-manipulation flex min-h-12 w-full items-center justify-between gap-4 py-4 text-left transition-colors hover:text-[#00F0FF] sm:min-h-0 sm:py-5"
+        size="faq"
+        variant="ghostSacc"
       >
         <span className="font-sacc-mono text-sm font-bold uppercase tracking-wider text-[#F1F5F9]">
           {q}
@@ -79,7 +83,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
           className="shrink-0 text-[#00F0FF] transition-transform duration-200"
           style={{ transform: open ? "rotate(180deg)" : undefined }}
         />
-      </button>
+      </Button>
       <div
         className="grid transition-[grid-template-rows] duration-200"
         style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
@@ -91,22 +95,6 @@ function FaqItem({ q, a }: { q: string; a: string }) {
         </div>
       </div>
     </div>
-  );
-}
-
-function TerminalIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      aria-hidden
-    >
-      <path d="M4 6h16v12H4z" />
-      <path d="m8 10 2 2-2 2M12 14h4" strokeLinecap="square" />
-    </svg>
   );
 }
 
@@ -135,15 +123,26 @@ export default function SaccPage() {
 
             <Terminal />
 
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLScdr-aDxrZaHumGMvKSUixdmFY9L9Hor2aEvaHHa-31qWTYFw/viewform?usp=publish-editor"
-              target="_blank"
-              rel="noreferrer"
-              className="touch-manipulation flex min-h-12 w-full max-w-sm items-center justify-center gap-3 bg-[#00F0FF] px-6 py-4 font-sacc-mono text-base font-bold uppercase tracking-widest text-[#0A0B0E] shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-[filter,box-shadow] hover:brightness-110 hover:shadow-[0_0_25px_rgba(0,240,255,0.6)] sm:min-h-0 sm:w-auto sm:max-w-none sm:px-8 sm:text-lg"
-            >
-              <TerminalIcon className="h-6 w-6 shrink-0" />
-              Register Now
-            </a>
+            <div className="flex w-full flex-col items-center justify-center gap-3 sm:flex-row">
+              <ExternalButton
+                href="https://docs.google.com/forms/d/e/1FAIpQLScdr-aDxrZaHumGMvKSUixdmFY9L9Hor2aEvaHHa-31qWTYFw/viewform?usp=publish-editor"
+                target="_blank"
+                rel="noreferrer"
+                size="saccHero"
+                variant="saccPrimary"
+              >
+                Register Now
+              </ExternalButton>
+              <ExternalButton
+                href={DISCORD_URL}
+                target="_blank"
+                rel="noreferrer"
+                size="saccHero"
+                variant="saccOutline"
+              >
+                Join Discord
+              </ExternalButton>
+            </div>
           </div>
         </section>
 
