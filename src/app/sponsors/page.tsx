@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Navbar from "@/components/navbar";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Sponsors",
   description:
-    "Organizations supporting the Seattle Area Coding Organization and our events.",
-};
+    "Meet the organizations supporting the Seattle Area Coding Organization, SACC, and competitive programming for students across the Pacific Northwest.",
+  path: "/sponsors",
+});
 
 const SPONSOR_TIERS = [
   {
