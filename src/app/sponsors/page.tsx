@@ -64,6 +64,12 @@ const SPONSOR_TIERS = [
         logoClassName: "object-contain",
         href: "https://www.interviewcake.com/",
       },
+      {
+        name: "Art of Problem Solving",
+        src: "/sponsors/aops.svg",
+        logoClassName: "object-contain",
+        href: "https://artofproblemsolving.com/",
+      },
     ],
   },
 ];
@@ -128,7 +134,7 @@ export default function SponsorsPage() {
                                   src={sponsor.src}
                                   alt={`${sponsor.name} logo`}
                                   fill
-                                  className="object-contain"
+                                  className={sponsor.logoClassName}
                                   sizes="(max-width: 640px) 100vw, 50vw"
                                 />
                               </div>
