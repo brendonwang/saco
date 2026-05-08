@@ -8,7 +8,22 @@ export const metadata: Metadata = {
     "Organizations supporting the Seattle Area Coding Organization and our events.",
 };
 
-const SPONSOR_TIERS = [
+type Sponsor = {
+  name: string;
+  src: string;
+  logoClassName: string;
+  logoFrameClassName?: string;
+  href: string;
+};
+
+type SponsorTier = {
+  name: string;
+  labelClass: string;
+  ruleClass: string;
+  sponsors: Sponsor[];
+};
+
+const SPONSOR_TIERS: SponsorTier[] = [
   {
     name: "Platinum",
     labelClass: "border-primary/40 text-primary",
@@ -36,7 +51,8 @@ const SPONSOR_TIERS = [
       {
         name: "Jane Street",
         src: "/sponsors/jane-street.svg",
-        logoClassName: "object-contain invert",
+        logoFrameClassName: "",
+        logoClassName: "object-contain",
         href: "https://www.janestreet.com/",
       },
       {
@@ -66,7 +82,7 @@ const SPONSOR_TIERS = [
       },
       {
         name: "Art of Problem Solving",
-        src: "/sponsors/aops.svg",
+        src: "/sponsors/aops.png",
         logoClassName: "object-contain",
         href: "https://artofproblemsolving.com/",
       },
@@ -128,7 +144,9 @@ export default function SponsorsPage() {
                             rel="noreferrer"
                             className="flex h-full flex-col border border-outline-variant bg-surface-container p-8 transition-colors hover:border-primary/40 focus:outline-none focus-visible:border-primary/70 focus-visible:ring-2 focus-visible:ring-primary/30 sm:p-10"
                           >
-                            <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-lg p-8 shadow-inner ring-1 ring-black/5 sm:p-10">
+                            <div
+                              className={`relative mx-auto w-full max-w-md overflow-hidden rounded-lg p-8 shadow-inner ring-1 ring-black/5 sm:p-10 ${sponsor.logoFrameClassName ?? ""}`}
+                            >
                               <div className="relative mx-auto aspect-[5/2] w-full">
                                 <Image
                                   src={sponsor.src}
