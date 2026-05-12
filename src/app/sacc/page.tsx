@@ -35,6 +35,10 @@ const FAQ_ITEMS = [
     a: "Teams of three. You can register with a pre-formed team or sign up individually and we'll match you with others.",
   },
   {
+    q: "What are the prizes?",
+    a: "First place: $40 per member | Second place: $20 per member | Third place: $10 per member",
+  },
+  {
     q: "What languages are allowed?",
     a: "C++, Java, and Python. Solutions are graded by an automated judge — partial credit is not awarded.",
   },
