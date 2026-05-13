@@ -1,14 +1,29 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import {
+  buttonClassName,
+  type ButtonSize,
+  type ButtonVariant,
+} from "@/components/button";
 
 export default function SmoothScrollButton({
   children,
   className,
   durationMs = 900,
+  size,
   topGapPx = 0,
   targetId,
-}: {children: ReactNode, className?: string, durationMs?: number, topGapPx?: number, targetId: string}) {
+  variant,
+}: {
+  children: ReactNode;
+  className?: string;
+  durationMs?: number;
+  size: ButtonSize;
+  topGapPx?: number;
+  targetId: string;
+  variant: ButtonVariant;
+}) {
   const animationFrameIdRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -81,7 +96,11 @@ export default function SmoothScrollButton({
   };
 
   return (
-    <button type="button" className={className} onClick={handleClick}>
+    <button
+      type="button"
+      className={buttonClassName({ className, size, variant })}
+      onClick={handleClick}
+    >
       {children}
     </button>
   );

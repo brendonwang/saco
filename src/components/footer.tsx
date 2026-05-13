@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExternalButton, LinkButton } from "@/components/button";
 
 const QUICK_LINKS = [
   { label: "HOME", href: "/" },
@@ -44,20 +45,22 @@ export default function Footer() {
               Featured
             </div>
             <div className="flex flex-col gap-2">
-              <Link
+              <LinkButton
                 href="/sacc"
-                className="inline-flex items-center justify-center border border-emerald-400/40 px-4 py-2 font-headline text-[11px] uppercase tracking-widest text-emerald-300 transition-all hover:border-emerald-300 hover:bg-emerald-400/10"
+                size="footer"
+                variant="outlineEmerald"
               >
                 View SACC 2026
-              </Link>
-              <a
+              </LinkButton>
+              <ExternalButton
                 href="https://discord.gg/s767nmxmg4"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center border border-primary/40 px-4 py-2 font-headline text-[11px] uppercase tracking-widest text-primary transition-all hover:border-primary hover:bg-primary/10"
+                size="footer"
+                variant="outlinePrimary"
               >
                 Join Our Discord
-              </a>
+              </ExternalButton>
             </div>
           </div>
 
@@ -65,12 +68,13 @@ export default function Footer() {
             <div className="mb-3 font-label text-[10px] uppercase tracking-[0.35em] text-slate-500">
               Contact
             </div>
-            <Link
+            <LinkButton
               href="/about"
-              className="inline-flex items-center justify-center border border-slate-700 px-4 py-2 font-headline text-[11px] uppercase tracking-widest text-slate-300 transition-all hover:border-primary/50 hover:text-primary"
+              size="footer"
+              variant="outlineSlate"
             >
               About the team
-            </Link>
+            </LinkButton>
           </div>
         </div>
       </div>
