@@ -21,9 +21,9 @@ const SACC_SCHEDULE = [
     time: "10:00am - 11:30am",
     event: "Set-up, opening ceremony, practice round, etc",
   },
-  { time: "11:30am - 12:30pm", event: "Lunch (provided)" },
-  { time: "12:30pm - 3:30pm", event: "Contest time" },
-  { time: "3:30pm - 4:00pm", event: "Awards ceremony" },
+  { time: "11:30am - 1pm", event: "Lunch (provided)" },
+  { time: "1:00pm - 4:00pm", event: "Contest time" },
+  { time: "4:00pm - 4:30pm", event: "Awards ceremony" },
 ] as const;
 
 function StatCard({ label, value }: { label: string; value: string }) {
