@@ -39,6 +39,10 @@ const FAQ_ITEMS = [
     a: "C++, Java, and Python. Solutions are graded by an automated judge — partial credit is not awarded.",
   },
   {
+    q: "Can I use AI tools during the contest?",
+    a: "No. Use of AI coding assistants, large language models, and other external code-generation tools is not allowed during the competition.",
+  },
+  {
     q: "Is the contest in-person or online?",
     a: "SACC 2026 is fully in-person in Seattle. We'll announce the exact venue closer to the event date.",
   },
