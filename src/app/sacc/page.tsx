@@ -1,9 +1,7 @@
-"use client";
-
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import Terminal from "./terminal";
 import Navbar from "@/components/navbar";
+import FaqItem from "./faq-item";
+import { saccEventJsonLd, stringifyJsonLd } from "@/lib/seo";
 
 const SACC_STATS = [
   { label: "Prize Pool", value: "$500" },
@@ -56,37 +54,6 @@ const FAQ_ITEMS = [
   },
 ] as const;
 
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-b border-[#1E293B]">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="touch-manipulation flex min-h-12 w-full items-center justify-between gap-4 py-4 text-left transition-colors hover:text-[#00F0FF] sm:min-h-0 sm:py-5"
-      >
-        <span className="font-sacc-mono text-sm font-bold uppercase tracking-wider text-[#F1F5F9]">
-          {q}
-        </span>
-        <ChevronDown
-          className="shrink-0 text-[#00F0FF] transition-transform duration-200"
-          style={{ transform: open ? "rotate(180deg)" : undefined }}
-        />
-      </button>
-      <div
-        className="grid transition-[grid-template-rows] duration-200"
-        style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
-      >
-        <div className="overflow-hidden">
-          <p className="pb-5 text-sm leading-relaxed text-[#64748B]">
-            {a}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function TerminalIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -109,6 +76,28 @@ export default function SaccPage() {
       <Navbar activePath="/sacc" />
 
       <main className="flex flex-grow flex-col items-center pt-page">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: stringifyJsonLd({
+              "@context": "https://schema.org",
+              "@graph": [
+                saccEventJsonLd,
+                {
+                  "@type": "FAQPage",
+                  mainEntity: FAQ_ITEMS.map((item) => ({
+                    "@type": "Question",
+                    name: item.q,
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: item.a,
+                    },
+                  })),
+                },
+              ],
+            }),
+          }}
+        />
         <section className="relative flex min-h-[min(100dvh,48rem)] w-full max-w-[1200px] flex-col items-center justify-center px-4 py-16 text-center sm:px-8 sm:py-24 md:min-h-[819px]">
           <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden opacity-20">
             <div className="h-[800px] w-[800px] rounded-full bg-[#00F0FF]/20 blur-[120px]" />

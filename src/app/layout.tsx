@@ -1,6 +1,7 @@
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import Footer from "@/components/footer";
+import { rootMetadata, siteJsonLd, stringifyJsonLd } from "@/lib/seo";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -15,11 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-saco-mono",
 });
 
-export const metadata: Metadata = {
-  title: "SACO",
-  description:
-    "Seattle Area Coding Organization — competitive programming and algorithmic thinking for pre-college coders across the Pacific Northwest.",
-};
+export const metadata = rootMetadata;
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -38,6 +35,10 @@ export default function RootLayout({
       className={`dark ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-dvh flex-col bg-background font-body text-on-surface selection:bg-primary selection:text-on-primary">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: stringifyJsonLd(siteJsonLd) }}
+        />
         <div className="flex-1">{children}</div>
         <Footer />
       </body>

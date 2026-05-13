@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { createPageMetadata } from "@/lib/seo";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -13,11 +13,12 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-sacc-mono",
 });
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "SACC 2026",
   description:
-    "Seattle's premier competitive programming contest. High stakes, intense technical competition.",
-};
+    "Register for SACC 2026, a 3-hour in-person competitive programming contest for pre-college students in Seattle.",
+  path: "/sacc",
+});
 
 export default function SaccLayout({
   children,

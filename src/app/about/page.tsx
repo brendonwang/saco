@@ -3,6 +3,14 @@ import { School, Trophy, Users } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
 import teamMembers from "@/data/team.json";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  title: "About",
+  description:
+    "Learn about the Seattle Area Coding Organization, a student-run community helping pre-college students learn, practice, and compete in programming.",
+  path: "/about",
+});
 
 // const STATS = [
 //   { value: "500+", label: "Active Members" },
