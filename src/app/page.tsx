@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { ArrowRight } from "lucide-react";
+import { ExternalButton, LinkButton } from "@/components/button";
 import Navbar from "@/components/navbar";
 import SmoothScrollButton from "@/components/smooth-scroll-button";
 
@@ -76,6 +77,8 @@ const EVENT_IMAGES = {
   hackNight:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuCqJCHr5lPcVVL0EfWLtHl94CjPyQWWlaGK_krPARy6wUvFF1zH2NlnIGXi11YtllMk19nrCgFbhFMO5ppnYgcIZb6VADtnne0zDWP8uO7KDopIbfb9Q-umgF2fxVCFGPOumhDu2vhw5x_5orYNP0AVzr1L2-2rbQ4k7iC69YFbpZdhBlqgYSMkv0tqknxzjPgiT-DqaT8DEm3ajcojNfAiYHX3m-NDpEodGkThLS4nSEJgW0piMjYj9agFHo1X-86ilosdBC8THas",
 } as const;
+
+const DISCORD_URL = "https://discord.gg/s767nmxmg4";
 
 const EVENTS = [
   {
@@ -255,10 +258,20 @@ export default function Home() {
               <SmoothScrollButton
                 targetId="upcoming-events"
                 topGapPx={24}
-                className="flex min-h-12 w-full items-center justify-center bg-secondary px-8 py-4 font-headline text-base font-bold uppercase tracking-widest text-on-secondary transition-all hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,255,163,0.4)] active:scale-[0.98] sm:min-h-0 sm:px-10 sm:py-5 sm:text-lg md:w-auto"
+                size="hero"
+                variant="secondary"
               >
                 View Upcoming Contests
               </SmoothScrollButton>
+              <ExternalButton
+                href={DISCORD_URL}
+                target="_blank"
+                rel="noreferrer"
+                size="hero"
+                variant="outlinePrimary"
+              >
+                Join Discord
+              </ExternalButton>
             </div>
           </div>
         </section>
@@ -299,12 +312,13 @@ export default function Home() {
               programming event of the season. Systems ready.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
+              <LinkButton
                 href="/sacc"
-                className="touch-manipulation flex min-h-12 w-full items-center justify-center bg-primary px-10 py-4 font-headline text-base font-bold uppercase tracking-widest text-on-primary shadow-[0_0_20px_rgba(0,240,255,0.2)] hover:brightness-110 sm:min-h-0 sm:w-auto sm:px-12 sm:py-5 sm:text-lg"
+                size="section"
+                variant="primary"
               >
                 More Details
-              </Link>
+              </LinkButton>
             </div>
           </div>
         </section>
