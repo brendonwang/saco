@@ -64,6 +64,12 @@ const SPONSOR_TIERS = [
         logoClassName: "object-contain",
         href: "https://www.interviewcake.com/",
       },
+      {
+        name: "Art of Problem Solving",
+        src: "/sponsors/aops.png",
+        logoClassName: "object-contain",
+        href: "https://artofproblemsolving.com/",
+      },
     ],
   },
 ];
