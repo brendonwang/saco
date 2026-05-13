@@ -27,6 +27,10 @@ function StatCard({ label, value }: { label: string; value: string }) {
 
 const FAQ_ITEMS = [
   {
+    q: "What are the prizes?",
+    a: "First place gets $40, second place gets $20, and third place gets $10.",
+  },
+  {
     q: "Who can participate?",
     a: "Any pre-college student may participate. You don't need prior competitive programming experience — beginners are welcome.",
   },
