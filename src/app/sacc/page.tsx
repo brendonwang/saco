@@ -21,7 +21,7 @@ const SACC_SCHEDULE = [
     time: "10:00am - 11:30am",
     event: "Set-up, opening ceremony, practice round, etc",
   },
-  { time: "11:30am - 1pm", event: "Lunch (provided)" },
+  { time: "11:30am - 1:00pm", event: "Lunch (provided)" },
   { time: "1:00pm - 4:00pm", event: "Contest time" },
   { time: "4:00pm - 4:30pm", event: "Awards ceremony" },
 ] as const;
